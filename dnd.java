@@ -1,0 +1,1098 @@
+import java.util.*;
+import java.util.Random;
+public class dnd
+{
+    Scanner sc = new Scanner(System.in);
+    Scanner enterScanner = new Scanner(System.in);
+
+    int playerHP;
+    String playerName;
+    String playerWeapon;
+    int monsterHP;
+    String newwep;
+    int magicspell;
+    int money;
+    int sidemissiontag;
+    String prodkey;
+    int dodo;
+    int exploretag;
+    int round;
+    int missiontag;
+
+    dnd() //default values
+    {
+        playerHP=10;
+        playerName="";
+        playerWeapon="Knife";
+        monsterHP=15;
+        newwep="";
+        magicspell=0;
+        money=0;
+        sidemissiontag=0;
+        prodkey="";
+        dodo=0;
+        exploretag=0;
+        round=0;
+        missiontag=0;
+    }
+
+    void startmenu()
+    {
+        System.out.println("-----------------------\nSTART MENU\n-----------------------");
+        System.out.println("1. Story Mode\n2. Explore\n3. Settings\n4. Exit");
+        int ch= sc.nextInt();
+
+        if(ch==1)
+        {
+            playerSetUp();
+        }
+        else if(ch==2)
+        {
+            explore();
+        }
+        else if(ch==3)
+        {
+            settings();
+        }
+        else
+        {
+            exit();
+        }
+    }
+
+    void playerSetUp()
+    {
+
+        System.out.println("***********************");
+        System.out.println("CUSTOMISE YOUR PLAYER");
+        System.out.println("***********************");
+        System.out.print("Please enter your character's name: ");
+        playerName=enterScanner.nextLine();
+        //money=money+50;
+        System.out.println("----------------");
+        System.out.println("Your HP: "+ playerHP);
+        System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("$: "+money);
+        System.out.println("----------------");
+
+        System.out.println("|Press any key to continue|");
+        enterScanner.nextLine();
+        senario1();      
+    }
+
+    void senario1()
+    {
+        System.out.println("************************************************");
+        System.out.println("CHAPTER 1: A WARRIOR IN NEED IS A WARRIOR INDEED");
+        System.out.println("************************************************");
+        money=money+50;
+        System.out.println("Your HP: "+ playerHP);
+        System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("$: "+money);
+        System.out.println("---------------------------------------------------------------------------------------------------------------");
+        System.out.println("Objective: Bring back the magic spell from the mighty dragon.\nThe dragon usually hovers around the mountains.");        
+        System.out.println("---------------------------------------------------------------------------------------------------------------");
+        System.out.println("|Press C to continue|");
+        String resp=sc.nextLine();
+        if(resp.equals("C"))
+        {
+            tower();
+        }
+        else
+        {
+            senario1();
+        }
+    }
+
+    void palaceGate()
+    {
+        System.out.println("*****************************");
+        System.out.println("Welcome to The Victor Palace ");
+        System.out.println("*****************************");
+        System.out.println("\n------------------------------------------------------------------\n");
+        System.out.println("You are at the gate of the Palace of King Victor.");
+        System.out.println("Guards are guarding the Palace gate");
+        System.out.println("");
+        System.out.println("What would you like to do?");
+        System.out.println("");
+        System.out.println("1: Talk to the guards");
+        System.out.println("2: Attack the guards");
+        System.out.println("3: Go back to Ding Dong Tower");
+        System.out.println("\n------------------------------------------------------------------\n");
+
+        int ch= sc.nextInt();
+
+        if(ch==1)
+        {
+            if(missiontag==0){
+                if(magicspell==1)
+                {
+                    System.out.println("\n------------------------------------------------------------------\n");
+                    System.out.println("Guard: You killed the dragon! It was a huge burden for our town.");
+                    System.out.println("Guard: It seems you are a trustworthy guy. Welcome to the Palace!");
+                    System.out.println("\n------------------------------------------------------------------\n");
+                    System.out.print("Respond: ");
+                    enterScanner.nextLine();
+                    magicspell=0;
+                    missiontag=1;
+                    tower();
+                }
+                else
+                {
+                    System.out.println("Guard 1: Stop! You are not allowed beyond this point.");
+                    System.out.print("Respond: ");
+                    String resp=enterScanner.nextLine();
+                    System.out.println("Guard 2: Our honour has given you a task to complete. You aren't welcomed before that.");
+                    System.out.println("\n------------------------------------------------------------------\n");
+                    System.out.println("|Press any key to continue|");
+                    enterScanner.nextLine();  
+                    palaceGate();
+
+                }
+            }
+            else{
+                System.out.println("Guard 1: Welcome to the palace of King Victor. Would you like to meet the king?");
+                System.out.print("Respond: ");
+                String resp=enterScanner.nextLine();
+                System.out.println("Guard 2: ");
+                System.out.println("\n------------------------------------------------------------------\n");
+                System.out.println("|Press any key to continue...|");
+                enterScanner.nextLine();  
+                palaceGate();
+            }
+        }
+
+        else if(ch==2)
+        {
+            if(playerHP>0)
+            {
+                System.out.println("Guards: So you've chosen death. No one messes around with the King's men!");
+                System.out.println("*The strong men fought furiously and left you injured*\n(You lose 1 HP)");
+                playerHP = playerHP-1;
+                System.out.println("Your HP: " + playerHP);
+                System.out.println("|Press any key to continue|");
+                enterScanner.nextLine();
+                palaceGate();
+            }
+            else
+            {
+                System.out.println("WASTED!");
+                if(money>=49)
+                {
+                    System.out.println("Please visit Spell Cafe to heal!");
+                    System.out.println("----------------");
+                    System.out.println("Your HP: "+ playerHP);
+                    System.out.println("Current Weapon: "+ playerWeapon);
+                    System.out.println("$: "+money);
+                    System.out.println("----------------");
+                    east();
+                }
+                else
+                {
+                    dead();
+                }
+            }
+        }
+        else if(ch==3)
+        {
+            tower();
+        }  
+        else
+            palaceGate();
+    }
+
+    void tower()
+    {
+        System.out.println("\n------------------------------------------------------------------\n");
+        System.out.println("***************************");
+        System.out.println("Welcome to Ding Dong Tower ");
+        System.out.println("***************************");
+        System.out.println("Where would you like to head next?");
+        System.out.println("1: North- Sipu River");
+        System.out.println("2: South- The Palace ");
+        System.out.println("3: East- Market");
+        System.out.println("4: West- Clove Mountains");
+        System.out.println("5: Dodo Port ");
+        System.out.println("6: Great Easton Station");
+        System.out.println("\n0: Teleport to Start Menu");
+        System.out.println("\n------------------------------------------------------------------\n");
+
+        int ch = sc.nextInt();
+
+        if(ch==1){
+            north();
+        }
+        else if(ch==2){
+            palaceGate();
+        }
+        else if(ch==3){
+            east();
+        }
+        else if(ch==4){
+            west();
+        }
+        else if(ch==5){
+            dodoport();
+        }
+        else if(ch==6){
+            railwaystation();
+        }
+        else if(ch==0){
+            startmenu();
+        }
+        else
+        {
+            tower();
+        }
+    }
+
+    void north()
+    {
+        System.out.println("\n------------------------------------------------------------------\n");
+        System.out.println("**********************************");
+        System.out.println("NORTH: WELCOME TO SIPU RIVERFRONT");
+        System.out.println("**********************************");
+        System.out.println("Where would you like to head next?");
+        System.out.println("1:Visit Friend's House ");
+        System.out.println("2:Fishing");
+        System.out.println("\n------------------------------------------------------------------\n");
+        int ch=sc.nextInt();
+        if(ch==1)
+        {
+            if(sidemissiontag==2)
+            {
+                System.out.println("-------------------------------------------------");
+                System.out.println("Your Friend isn't at his home. Come again later!");
+                System.out.println("-------------------------------------------------");
+                System.out.println("|Press any key to continue...|");
+                enterScanner.nextLine();
+            }
+            else{
+                System.out.println("*****************************");
+                System.out.println("Side Mission: A Helping Hand");
+                System.out.println("*****************************");
+                System.out.println("----------Storyline-------------");
+                System.out.println(" Story isn't ready yet. ");
+                System.out.println("----------------------------------------------------------------------");
+                System.out.println("Objective: Help your friend repay his debts by playing The Lucky Bucky");
+                System.out.println("----------------------------------------------------------------------");
+                System.out.println("|Press C to continue or Q to quit the mission|");
+                String resp=enterScanner.nextLine();
+                if(resp.equals("C"))
+                {
+                    sidemissiontag=1;
+                    gameparlour();
+                }
+                else 
+                {
+                    System.out.println("-------------------------------");
+                    System.out.println("MISSION ABORTED");
+                    System.out.println("-------------------------------");
+                    tower();
+                }
+            }
+        }
+        else if(ch==2){
+            System.out.println("You: Woof! Its so sunny! I am sweating already.\nFisherman: Hello gentleman! Would you like to go fishing? Y: Yes(-$15)/ N: No");
+            String resp=enterScanner.nextLine();
+            if(resp.equals('Y'))
+            {
+                System.out.println("You: Why not!");
+                if(money>=15)
+                {          
+                    money=money-15;
+                    fishing();
+                }
+                else
+                {
+                    System.out.println("Fisherman: Oh no! You do not have enough money to go fishing!");
+                    north();
+                }
+            }
+        }
+
+        System.out.println("\n\n1: Go back to the crossroad");
+        System.out.println("\n------------------------------------------------------------------\n");
+        int ch1=sc.nextInt();
+
+        if(ch1==1)
+        {
+            tower();
+        }
+        else
+        {
+            north();
+        }
+    }
+
+    void fishing()
+    {
+        System.out.println("--------------------");
+        System.out.println("Your HP: "+ playerHP);
+        System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("$: "+money);
+        System.out.println("********************************");
+        System.out.println("         The Fresh Catch        ");
+        System.out.println("********************************");
+        System.out.println("You have 5 chances. Catch as many fishes as possible by entering the distance to throw the bait.\nFor every fish you catch, you get $10.");
+        System.out.println("------------------------------------------------------------------------------------------------");
+        int x=5;
+        int fish=0;
+        while(x>0&&x<6)
+        {
+            System.out.println("Enter throw distance");
+            int N=sc.nextInt();
+
+            int sr = (int) Math.sqrt(N);
+            if(N<50&&sr*sr==N)
+            {
+                System.out.println("Yay! You caught a fish!");
+                fish++;
+            }
+            else
+            {
+                System.out.println("Oops! Missed it!");
+            }
+            x--;
+        }
+        int reward=fish*10;
+        System.out.println("------------------------------------------------");
+        System.out.println("You got $"+reward+" for catching "+fish+" fishes");
+        System.out.println("------------------------------------------------");
+        money=money+reward;
+        System.out.println("Your $: "+money);
+        System.out.println("\n\n1: Go back to the crossroad");
+        System.out.println("\n------------------------------------------------------------------\n");
+        int ch1=sc.nextInt();
+        if(ch1==1)
+        {
+            tower();
+        }
+        else
+        {
+            north();
+        }
+    }
+
+    void east()
+    {
+        System.out.println("\n------------------------------------------------------------------\n");
+        System.out.println("*******************************");
+        System.out.println("WELCOME TO THE MARKET");
+        System.out.println("*******************************");
+        System.out.println("1. Visit Ammu Nation");
+        System.out.println("2. Visit Spell Cafe");
+        System.out.println("3. Visit Lucky Bucky");
+        System.out.println("\n------------------------------------------------------------------\n");
+        int ch=sc.nextInt();
+
+        if(ch==1)
+        {
+            System.out.println("**********************");
+            System.out.println("Welcome to Ammu Nation");
+            System.out.println("**********************");
+            System.out.println("1.Long Knife\t$15\n2.Sword\t$75\n3.Grass Chopper\t$50\n4.Magic Wand\t$200");
+            int choice=sc.nextInt();
+
+            if(choice==1 && money>=15)
+            {
+                playerWeapon="Long Knife";
+                money=money-15;
+                System.out.println("Your HP: "+ playerHP);
+                System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("$: "+money);
+            }
+            else if(choice==2 && money>=75)
+            {
+                playerWeapon="Sword";
+                money=money-75;
+                System.out.println("Your HP: "+ playerHP);
+                System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("$: "+money);
+            }
+            else if(choice==3 && money>=50)
+            {
+                playerWeapon="Grass Chopper";
+                money=money-50;
+                System.out.println("Your HP: "+ playerHP);
+                System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("$: "+money);
+            }
+            else if(choice==4 && money >=200)
+            {
+                playerWeapon="Magic Wand";
+                money=money-200;
+                System.out.println("Your HP: "+ playerHP);
+                System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("$: "+money);
+            }
+            else
+            {
+                System.out.println("-----------------------------------------------------");
+                System.out.println("Uh oh! You do not have enough money to purchase that!");
+            }
+        }
+        else if(ch==2)
+        {
+            System.out.println("**********************");
+            System.out.println("Welcome to Spell Cafe");
+            System.out.println("**********************");
+            System.out.println("1.Heal Spell\t$49\n2.Rage Spell\t$175");
+            int choice=sc.nextInt();
+            if(choice==1 && money>=49)
+            {
+                System.out.println("The heal spell has restored your HP!");
+                playerHP=10;
+                money=money-49;
+                System.out.println("---------------------------");
+                System.out.println("Your HP: "+ playerHP);
+                System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("$: "+money);
+                System.out.println("---------------------------");
+            }
+            else if(choice==2 && money>=175)
+            {
+                System.out.println("The rage spell has increased your HP!");
+                playerHP=15;
+                money=money-175;
+                System.out.println("---------------------------");
+                System.out.println("Your HP: "+ playerHP);
+                System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("$: "+money);
+                System.out.println("---------------------------");
+            }
+            else
+            {
+                System.out.println("-----------------------------------------------------");
+                System.out.println("Uh oh! You do not have enough money to purchase that!");
+                System.out.println("-----------------------------------------------------");
+                System.out.println("|Press any key to continue|");
+                enterScanner.nextLine();
+            }
+        }
+        else if(ch==3)
+        {
+            System.out.println("***********************");
+            System.out.println("Welcome to Lucky Bucky");
+            System.out.println("***********************");
+            System.out.println("Host: Would you like to try your luck? Y:Yes(-$100)/ N:NO");
+            System.out.println("------------------------------------------------------------");
+            String resp=enterScanner.nextLine();
+            if(resp.equals("Y"))
+            {
+                System.out.println("You: No one's luckier than me ;)");
+                if(money>=100)
+                {
+                    money=money-100;
+                    gameparlour();
+                }
+                else
+                {
+                    System.out.println("Host: Uh oh! Looks like you do not have enough money to try your luck!");
+                    System.out.println("-----------------------------------------------------------------------");
+                    System.out.println("|Press any key to continue|");
+                    enterScanner.nextLine();
+                }
+            }
+            else
+            {
+                System.out.println("\n------------------------------------------------------------------");
+                System.out.println("\n1: Go back to the crossroad");
+                System.out.println("\n------------------------------------------------------------------\n");
+                int ch1=sc.nextInt();
+                if(ch1==1)
+                {
+                    tower();
+                }
+                else
+                {
+                    east();
+                }
+            }
+        }
+
+        System.out.println("\n------------------------------------------------------------------");
+        System.out.println("\n1: Go back to the crossroad");
+        System.out.println("\n------------------------------------------------------------------\n");
+        int ch1=sc.nextInt();
+        if(ch1==1)
+        {
+            tower();
+        }
+        else
+        {
+            east();
+        }
+    }
+
+    void gameparlour()
+    {
+        System.out.println("--------------------");
+        System.out.println("Your HP: "+ playerHP);
+        System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("$: "+money);
+        System.out.println("--------------------");
+        System.out.println("********************************");
+        System.out.println("        The Lucky Bucky      ");
+        System.out.println("********************************");
+        System.out.println("You have 5 chances to guess the 5 lucky numbers ranging from 1 to 100. The numbers generated shall be totally random."); 
+        System.out.println("The game is based on your guess and luck. For every number gussed correctly, you get $100. ;)");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------");
+        Random rand = new Random();
+        int x=5;
+        int count=0;
+        while(x>0&&x<6)
+        {
+            System.out.print("Guess a random number: ");
+            int no=sc.nextInt();
+            int rand_int1 = rand.nextInt(100);
+            if(x<100)
+            {
+                if(no==rand_int1){
+                    System.out.println("You won!");
+                    count++;
+                }
+                else{
+                    System.out.println("The number was: "+rand_int1);
+                    System.out.println("You lost!");
+                    x--;
+                }
+            }
+            else
+            {
+                System.out.println("Number not in range!");
+                gameparlour();
+            }
+        }
+        int reward=count*100;
+        money=money+reward;
+
+        if(sidemissiontag==1)
+        {
+            if(count>=1)
+            {
+                System.out.println("\nYou won $"+reward+" in the game");
+                System.out.println("-------------------------------");
+                System.out.println("MISSION PASSED!\nBonus: $200");
+                money=money+200;
+                System.out.println("-------------------------------");  
+                System.out.println("Your $: "+money);
+                sidemissiontag=2;
+            }
+            else
+            {
+                System.out.println("You got $"+reward+" in the game");
+                System.out.println("-------------------------------");
+                System.out.println("MISSION FAILED :(");
+                System.out.println("-------------------------------");
+                System.out.println("Your $: "+money);
+            }
+        }
+        else
+        {
+            System.out.println("------------------------------------------------");
+            System.out.println("You won $"+reward+" for sucessfully guessing "+count+" numbers!");
+            System.out.println("------------------------------------------------");
+            System.out.println("Your $: "+money);
+        }
+        System.out.println("\n------------------------------------------------------------------");
+        System.out.println("\n\n1: Go back to the crossroad");
+        System.out.println("\n------------------------------------------------------------------\n");
+        int ch1=sc.nextInt();
+        if(ch1==1)
+        {
+            tower();
+        }
+        else
+        {
+            east();
+        }
+    }
+
+    void dodoport()
+    {
+        System.out.println("--------------------");
+        System.out.println("Your HP: "+ playerHP);
+        System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("$: "+money);
+        System.out.println("--------------------");
+        System.out.println("********************************");
+        System.out.println("       Welcome to DoDo Port     ");
+        System.out.println("********************************");
+        System.out.println("Where would you like to fly to?");
+        System.out.println("\n------LEISURE FLIGHTS------");
+        System.out.println("1:Sight-Seeing Tour ");
+        System.out.println("2:Hill Top- Clove Mountains");
+        System.out.println("\n0: Teleport to Ding Dong Tower");
+        System.out.println("\n------------------------------------------------------------------\n");
+
+        int ch = sc.nextInt();
+
+        if(ch==1){
+            System.out.println("-------TICKETS & PRICING-------");
+            System.out.println("1.Round Trip\t$5\n0.Return Back");
+            int choice=sc.nextInt();
+            if(choice==1){
+                if(money>=5){
+                    money=money-5;
+                    System.out.println("***EXPLORE THE MAJESTIC KINGDOM***");
+                    System.out.println("Respond: ");
+                    enterScanner.nextLine();
+                    explore();
+                }
+                else{
+                    System.out.println("------------------------------------");
+                    System.out.println("You do not have enough money to fly!");
+                    System.out.println("------------------------------------");
+                    System.out.println("|Press any key to continue|");
+                    enterScanner.nextLine();
+                    dodoport();
+                }
+            }      
+
+            else if(ch==2){
+                System.out.println("-------TICKETS & PRICING-------");
+                System.out.println("1.One Way\t$100\n2.Round Trip\t$150\n0.Return Back");
+                if(choice==1){
+                    if(money>=100){
+                        money=money-100;
+                        System.out.println("***FLYING TO CLOVE MOUNTAINS***");
+                        System.out.println("Respond: ");
+                        enterScanner.nextLine();
+                        dodo=1;
+                        west();
+                    }
+                    else{
+                        System.out.println("------------------------------------");
+                        System.out.println("You do not have enough money to fly!");
+                        System.out.println("------------------------------------");
+                        System.out.println("|Press any key to continue|");
+                        enterScanner.nextLine();
+                        dodoport();
+                    }
+                }
+                else if(choice==2){
+                    if(money>=150){
+                        round=1;
+                        money=money-150;
+                        System.out.println("***FLYING TO CLOVE MOUNTAINS***");
+                        System.out.print("Respond: ");
+                        enterScanner.nextLine();
+                        dodo=1;
+                        west();
+                    }
+                    else{
+                        System.out.println("------------------------------------");
+                        System.out.println("You do not have enough money to fly!");
+                        System.out.println("------------------------------------");
+                        System.out.println("|Press any key to continue|");
+                        enterScanner.nextLine();
+                        dodoport();
+                    }
+                }
+            }
+        }
+
+        else if(ch==0){
+            tower();
+        }
+        else{
+            dodoport();
+        }
+    }
+
+    void railwaystation()
+    {
+        System.out.println("--------------------");
+        System.out.println("Your HP: "+ playerHP);
+        System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("$: "+money);
+        System.out.println("--------------------");
+        System.out.println("********************************");
+        System.out.println("Welcome to Great Easton Station ");
+        System.out.println("********************************");
+        System.out.println("Where would you like to travel to?");
+        System.out.println("\n------INTER-KINGDOM TRAINS------");
+        System.out.println("1: Kingdom of Kaza");
+
+        System.out.println("\n0: Teleport to Ding Dong Tower");
+        System.out.println("\n------------------------------------------------------------------\n");
+
+        int ch = sc.nextInt();
+
+        if(ch==1){
+            System.out.println("-------TICKETS & PRICING-------");
+            System.out.println("1.One Way\t$50\n0.Return Back");
+            int choice=sc.nextInt();
+            if(choice==1){
+                if(money>=50){
+                    if(missiontag==1){
+                        System.out.println("*****WELCOME ON THE ORIENTAL EXPRESS****\nFrom: \tTo:");
+                        System.out.println("-------------------");
+                        System.out.println("Station Master: Have a safe jouney!");
+                        System.out.print("Respond:");
+                        enterScanner.nextLine();
+                        System.out.println("------------------------");
+                        ending();
+                    }
+                    else{
+                        System.out.println("Station Master: No scheduled trains for this destination. The dragon has destroyed the tracks ahead.");  
+                        System.out.print("Respond:");
+                        enterScanner.nextLine();
+                        System.out.println("------------------------");
+                        railwaystation();
+                    }
+                }
+                else{
+                    System.out.println("---------------------------------------");
+                    System.out.println("You do not have enough money to travel!");
+                    System.out.println("---------------------------------------");
+                    System.out.println("|Press any key to continue|");
+                    enterScanner.nextLine();
+                    railwaystation();
+                }
+            }
+            else if(choice==0){
+                railwaystation();
+            }
+        }
+        else if(ch==0){
+            tower();
+        }
+        else{
+            railwaystation();
+        }
+    }
+
+    public void west()
+    {
+        System.out.println("***********************************");
+        System.out.println("WEST: Clove Mountains Base Station");
+        System.out.println("***********************************");
+        if(missiontag==0){
+            if(magicspell==0){
+                if(dodo==1)
+                {
+                    System.out.println("-------------------------------");
+                    System.out.println("         DRAGON'S LAIR         ");
+                    System.out.println("-------------------------------");
+                    System.out.println("----------Storyline-------------");
+                    System.out.println("      UNDER DEVELOPEMENT!       ");
+                    System.out.println("--------------------------------");
+                    System.out.println("Objective: You found the dragon. Kill the dragon & get the magic spell.");
+                    System.out.println("1: Fight");
+                    System.out.println("2: Run Away");
+                    System.out.println("\n------------------------------------------------------------------\n");
+
+                    int ch=sc.nextInt();
+
+                    if(ch==1)
+                    {
+                        fight();
+                    }
+                    else if(ch==2)
+                    {
+                        tower();
+                    }
+                    else
+                    {
+                        west();
+                    }
+                }
+                else
+                {
+                    System.out.println("Serviceman: STOP! You cannot go any further. The road towards the hilltop is broken.");
+                    System.out.print("Respond: ");
+                    enterScanner.nextLine();
+                    tower();
+                }
+            }
+            else{
+                System.out.println("You have already killed the mighty dragon & obtained the magic spell\nReturn it back to the king!");
+                System.out.println("\n------------------------------------------------------------------\n");
+                System.out.println("1: Towards Crossroad");
+                System.out.println("\n------------------------------------------------------------------\n");
+                int choice = sc.nextInt();
+                if(choice==1){
+                    tower();
+                }
+                else{
+                    west();
+                }
+            }
+        }
+        else{
+            System.out.println("-------------------------------");
+            System.out.println("          HILL TOP            ");
+            System.out.println("-------------------------------");
+            playerHP=10;
+            System.out.println("Resting....\nYour HP has been restored!");
+            System.out.println("|Press any key to continue|");
+            enterScanner.nextLine();
+            tower();
+        }
+    }
+
+    public void fight()
+    {
+        System.out.println("\n------------------------------------------------------------------\n");
+        System.out.println("Your HP: "+ playerHP);
+        System.out.println("Dragon's HP: " + monsterHP);
+        System.out.println("\n1: Attack");
+        System.out.println("2: Run");
+        System.out.println("\n------------------------------------------------------------------\n");
+
+        int ch = sc.nextInt();
+
+        if(ch==1)
+        {
+            attack();
+        }
+        else if(ch==2)
+        {
+            tower();
+        }
+        else
+        {
+            fight();
+        }
+    }
+
+    public void attack()//beta3
+    {
+        int playerDamage =0;
+
+        if(playerWeapon.equals("Knife")||playerWeapon.equals("Mystery Weapon")){
+            playerDamage = new java.util.Random().nextInt(5);
+        }
+        else if(playerWeapon.equals("Sword")||playerWeapon.equals("Long Knife")){
+            playerDamage = new java.util.Random().nextInt(8);
+        }
+        else if(playerWeapon.equals(newwep)){
+            playerDamage = new java.util.Random().nextInt(6);
+        }
+        else if(playerWeapon.equals("Magic Wand")){
+            playerDamage = new java.util.Random().nextInt(9);
+        }
+
+        System.out.println("You attacked the dragon and gave " +playerDamage + " damage!");
+        monsterHP = monsterHP - playerDamage;
+        System.out.println("Monster HP: " + monsterHP);
+        if(monsterHP<1){ win(); } else if(monsterHP>0){
+            int monsterDamage =0;
+
+            monsterDamage = new java.util.Random().nextInt(4);
+
+            System.out.println("The dragon attacked you and gave " +monsterDamage + " damage!");
+
+            playerHP = playerHP - monsterDamage;
+
+            System.out.println("Player HP: " + playerHP);
+
+            if(playerHP<1){ dead(); } else if(playerHP>0){
+                fight();
+            }
+        }
+
+    }
+
+    public void dead(){
+        System.out.println("\n------------------------------------------------------------------\n");
+        System.out.println("WASTED!");
+        System.out.println("\n\nGAME OVER!");
+        System.out.println("\n------------------------------------------------------------------\n");
+        exit();
+    }
+
+    public void win(){
+        System.out.println("\n------------------------------------------------------------------\n");
+        System.out.println("YAY! YOU KILLED THE DRAGON!");
+        System.out.println("The dragon has dropped the magic spell!");
+        System.out.println("------------------------------");
+        System.out.println("Press F to pick up the spell");
+        System.out.println("------------------------------");
+        String pick=enterScanner.nextLine();
+        if(pick.equals("F"))
+        {
+            System.out.println("You obtained the magic spell!\n\n");
+            System.out.println("\n------------------------------------------------------------------\n");
+            System.out.println("Objective: Take the magic spell back to King Victor");
+            System.out.println("1: Fly back to DoDo Port");
+            System.out.println("\n------------------------------------------------------------------\n");
+            magicspell = 1;
+            int choice = sc.nextInt();
+            if(choice==1){
+                if(round==1){
+                    dodoport();
+                }
+                else{
+                    System.out.println("No DoDo available! Would you like to call one? Y:Yes(-$70)/N: No");
+                    String resp=enterScanner.nextLine();
+                    if(resp.equals("Y")){
+                        if(money>=70){
+                            dodo=1;
+                            money=money-70;
+                            System.out.println("------------------------------");
+                            System.out.println("DoDo has arrived!\nFlying back!");
+                            System.out.print("Respond: ");
+                            enterScanner.nextLine();
+                            System.out.println("------------------------------");
+                            dodoport();
+                        }
+                        else{
+                            System.out.println("Oops! You do not have enough money!");
+                            System.out.println("-----------");
+                            System.out.println("GAME OVER!");
+                            System.out.println("-----------");
+                            exit();
+                        }
+                    }
+                    else{
+                        System.out.println("Oops! You weren't able to take the magic spell back to the king!");
+                        System.out.println("-----------");
+                        System.out.println("GAME OVER!");
+                        System.out.println("-----------");
+                        exit();
+                    }
+                }
+            }
+            else{
+                win();
+            }
+        }
+        else
+        {
+            System.out.print("You left the spell behind");
+            System.out.println("------------------------");
+            System.out.println("MISSION FAILED :(");
+            System.out.println("------------------------");
+            magicspell=0;
+            System.out.println("\n------------------------------------------------------------------\n");
+            System.out.println("1: Towards DoDo Port");
+            System.out.println("\n------------------------------------------------------------------\n");
+            int choice = sc.nextInt();
+            if(choice==1){
+                dodoport();
+            }
+            else{
+                west();
+            }
+        }
+    }
+
+    public void ending(){
+        System.out.println("******CHAPTER II******");
+        System.out.println("      Coming soon.... ");
+        System.out.println("\n\n--------------THE END-----------------");
+        System.out.println("*****************DUNGEONS & DRAGONS***************");
+        System.out.println("\n\n          A game by Pratyush Kumar            ");    
+    }
+
+    public void exit()
+    {
+        System.out.println("-------Goodbye!-------");
+    }
+
+    /*void authentication()
+    {
+    System.out.println("Press 1 to enter product key to play full version otherwise press 2 to play demo version");
+    int ch=sc.nextInt();
+    if(ch==1)
+    {
+    System.out.print("Please enter Product Key: ");
+    String prodkey= sc.nextLine();
+
+    if(prodkey.equals("ADmIn")||prodkey.equals("betatester"))
+    startmenu();
+    }
+    else
+    System.out.println("Invalid Product Key");
+    authentication();
+    }*/
+
+    public void settings()
+    {
+        System.out.println("-----------------------");
+        System.out.println("GAME SETTINGS");
+        System.out.println("-----------------------");
+        System.out.println("1. Update Player HP\n2. Update Monster HP\n3. Check for Game Updates");
+        if(prodkey.equals("admin"))
+        {
+            System.out.println("4. Update Player Money");
+        }
+        System.out.println("-----------------------------------------------------------------------------");
+        int ch=sc.nextInt();
+
+        if(ch==1)
+        {
+            System.out.println("  Default Player HP: 10");
+            System.out.print("  Enter new Player HP: ");
+            playerHP=sc.nextInt();
+            System.out.println("  Update Successful! ");
+            System.out.println("Loading Game.....");
+            startmenu();
+        }
+        else if(ch==2)
+        {
+            System.out.println("  Default Monster HP: 15");
+            System.out.print("  Enter new Player HP: ");
+            monsterHP=sc.nextInt();
+            System.out.println("  Update Successful! ");
+            System.out.println("Loading Game.....");
+            startmenu();
+        }
+        else if(ch==3)
+        {
+            System.out.print("Checking for Updates....");
+            System.out.println("Game is up to date");
+            System.out.println("Beta 3");
+            startmenu();
+        }
+        else if(ch==4)
+        {
+            System.out.println("Default Player Money(at start): 0");
+            System.out.print(" Enter new Player money: ");
+            money=sc.nextInt();
+            System.out.println("  Update Successful! ");
+            System.out.println("Loading Game.....");
+            startmenu();
+        }
+    }
+    
+    void explore()
+    {
+        System.out.println("-----WELCOME TO COCO KINGDOM-----");
+        startmenu();
+    }
+
+    void auth() 
+    {
+        System.out.println("\nINTRODUCTION: Welcome to Dungeons & Dragons, a text-based game with an adventurous storyline and a thrilling gameplay.");
+        System.out.println("This is the second beta version of the game whichfocuses on the overall gameplay and various aspects of senario in the town.");
+        System.out.println("Only a partial storyline is available in this version. You might encouter several bugs throughout the gameplay.\nHowever, there are enough hints to help you navigate through the little town.");
+        System.out.println("\n*****CHANGELOG*****");
+        System.out.println("1.NOW OPEN: Dodo Port & Great Easton Railway Station\n2.NOW AVAILABLE: ---- \n3.Bug Fixes\n4.Improved Quality of Life & Gameplay Experiences");
+        System.out.println("--------------------");
+        System.out.print("\nThe game is open to beta testers only.\nPlease enter the Product Key to continue: ");
+        prodkey=sc.nextLine();
+        if(prodkey.equals("betatester")||prodkey.equals("admin"))
+        {
+            startmenu();
+        }
+        else
+        {
+            System.out.println("Invalid Key");
+            System.out.println("Now a betatester? SIGN UP NOW for an early hands on of the game!");
+            exit();
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        dnd ob=new dnd();
+        System.out.println("******************************");
+        System.out.println("     DUNGEONS & DRAGONS       ");
+        System.out.println("************Beta 3***********");
+        ob.auth();
+    }
+}
