@@ -638,6 +638,7 @@ public class dnd
                     System.out.println("***EXPLORE THE MAJESTIC KINGDOM***");
                     System.out.println("Respond: ");
                     enterScanner.nextLine();
+                    dodo=1;
                     explore();
                 }
                 else{
@@ -648,48 +649,56 @@ public class dnd
                     enterScanner.nextLine();
                     dodoport();
                 }
-            }      
+            }
+            else
+            {
+                dodoport();
+            }
+        }
 
-            else if(ch==2){
-                System.out.println("-------TICKETS & PRICING-------");
-                System.out.println("1.One Way\t$100\n2.Round Trip\t$150\n0.Return Back");
-                if(choice==1){
-                    if(money>=100){
-                        money=money-100;
-                        System.out.println("***FLYING TO CLOVE MOUNTAINS***");
-                        System.out.println("Respond: ");
-                        enterScanner.nextLine();
-                        dodo=1;
-                        west();
-                    }
-                    else{
-                        System.out.println("------------------------------------");
-                        System.out.println("You do not have enough money to fly!");
-                        System.out.println("------------------------------------");
-                        System.out.println("|Press any key to continue|");
-                        enterScanner.nextLine();
-                        dodoport();
-                    }
+        else if(ch==2){
+            System.out.println("-------TICKETS & PRICING-------");
+            System.out.println("1.One Way\t$100\n2.Round Trip\t$150\n0.Return Back");
+            int choice=sc.nextInt();
+            if(choice==1){
+                if(money>=100){
+                    money=money-100;
+                    System.out.println("***FLYING TO CLOVE MOUNTAINS***");
+                    System.out.println("Respond: ");
+                    enterScanner.nextLine();
+                    dodo=1;
+                    west();
                 }
-                else if(choice==2){
-                    if(money>=150){
-                        round=1;
-                        money=money-150;
-                        System.out.println("***FLYING TO CLOVE MOUNTAINS***");
-                        System.out.print("Respond: ");
-                        enterScanner.nextLine();
-                        dodo=1;
-                        west();
-                    }
-                    else{
-                        System.out.println("------------------------------------");
-                        System.out.println("You do not have enough money to fly!");
-                        System.out.println("------------------------------------");
-                        System.out.println("|Press any key to continue|");
-                        enterScanner.nextLine();
-                        dodoport();
-                    }
+                else{
+                    System.out.println("------------------------------------");
+                    System.out.println("You do not have enough money to fly!");
+                    System.out.println("------------------------------------");
+                    System.out.println("|Press any key to continue|");
+                    enterScanner.nextLine();
+                    dodoport();
                 }
+            }
+            else if(choice==2){
+                if(money>=150){
+                    round=1;
+                    money=money-150;
+                    System.out.println("***FLYING TO CLOVE MOUNTAINS***");
+                    System.out.print("Respond: ");
+                    enterScanner.nextLine();
+                    dodo=1;
+                    west();
+                }
+                else{
+                    System.out.println("------------------------------------");
+                    System.out.println("You do not have enough money to fly!");
+                    System.out.println("------------------------------------");
+                    System.out.println("|Press any key to continue|");
+                    enterScanner.nextLine();
+                    dodoport();
+                }
+            }
+            else if(choice==0){
+                dodoport();
             }
         }
 
@@ -993,23 +1002,6 @@ public class dnd
         System.out.println("-------Goodbye!-------");
     }
 
-    /*void authentication()
-    {
-    System.out.println("Press 1 to enter product key to play full version otherwise press 2 to play demo version");
-    int ch=sc.nextInt();
-    if(ch==1)
-    {
-    System.out.print("Please enter Product Key: ");
-    String prodkey= sc.nextLine();
-
-    if(prodkey.equals("ADmIn")||prodkey.equals("betatester"))
-    startmenu();
-    }
-    else
-    System.out.println("Invalid Product Key");
-    authentication();
-    }*/
-
     public void settings()
     {
         System.out.println("-----------------------");
@@ -1045,7 +1037,7 @@ public class dnd
         {
             System.out.print("Checking for Updates....");
             System.out.println("Game is up to date");
-            System.out.println("Beta 3");
+            System.out.println("Beta 3 Edition II");
             startmenu();
         }
         else if(ch==4)
@@ -1058,20 +1050,30 @@ public class dnd
             startmenu();
         }
     }
-    
+
     void explore()
     {
-        System.out.println("-----WELCOME TO COCO KINGDOM-----");
-        startmenu();
+        //System.out.println("-----WELCOME TO COCO KINGDOM-----");
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println("THIS MODULE IS STILL UNDER DEVELOPEMENT");
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println("|Press any key to continue|");
+        enterScanner.nextLine();
+        if(dodo==1){
+            dodoport();
+        }
+        else{
+            startmenu();
+        }
     }
 
     void auth() 
     {
         System.out.println("\nINTRODUCTION: Welcome to Dungeons & Dragons, a text-based game with an adventurous storyline and a thrilling gameplay.");
-        System.out.println("This is the second beta version of the game whichfocuses on the overall gameplay and various aspects of senario in the town.");
-        System.out.println("Only a partial storyline is available in this version. You might encouter several bugs throughout the gameplay.\nHowever, there are enough hints to help you navigate through the little town.");
+        System.out.println("This is the third beta version of the game which focuses on the overall gameplay and various interactive senarios in the town.");
+        System.out.println("Only a partial storyline is available in this version. However, there are enough hints to help you navigate through the little town.\n Since this is a beta release, you may encouter several bugs throughout the gameplay.");
         System.out.println("\n*****CHANGELOG*****");
-        System.out.println("1.NOW OPEN: Dodo Port & Great Easton Railway Station\n2.NOW AVAILABLE: ---- \n3.Bug Fixes\n4.Improved Quality of Life & Gameplay Experiences");
+        System.out.println("1.NOW OPEN: Dodo Port & Great Easton Railway Station\n2.NOW AVAILABLE: Player Customisation & Player Responses\n3.Stability & Bug Fixes\n4.Improved Quality of Life & Gameplay Experiences");
         System.out.println("--------------------");
         System.out.print("\nThe game is open to beta testers only.\nPlease enter the Product Key to continue: ");
         prodkey=sc.nextLine();
@@ -1092,7 +1094,7 @@ public class dnd
         dnd ob=new dnd();
         System.out.println("******************************");
         System.out.println("     DUNGEONS & DRAGONS       ");
-        System.out.println("************Beta 3***********");
+        System.out.println("**********Beta 3.5***********");
         ob.auth();
     }
 }
