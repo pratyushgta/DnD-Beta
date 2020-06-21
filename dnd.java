@@ -283,7 +283,7 @@ public class dnd
                     sidemissiontag=1;
                     gameparlour();
                 }
-                else 
+                else
                 {
                     System.out.println("-------------------------------");
                     System.out.println("MISSION ABORTED");
@@ -295,7 +295,7 @@ public class dnd
         else if(ch==2){
             System.out.println("You: Woof! Its so sunny! I am sweating already.\nFisherman: Hello gentleman! Would you like to go fishing? Y: Yes(-$15)/ N: No");
             String resp=enterScanner.nextLine();
-            if(resp.equals('Y'))
+            if(resp.equals("Y"))
             {
                 System.out.println("You: Why not!");
                 if(money>=15)
@@ -535,7 +535,7 @@ public class dnd
         System.out.println("********************************");
         System.out.println("        The Lucky Bucky      ");
         System.out.println("********************************");
-        System.out.println("You have 5 chances to guess the 5 lucky numbers ranging from 1 to 100. The numbers generated shall be totally random."); 
+        System.out.println("You have 5 chances to guess the 5 lucky numbers ranging from 1 to 100. The numbers generated shall be totally random.");
         System.out.println("The game is based on your guess and luck. For every number gussed correctly, you get $100. ;)");
         System.out.println("--------------------------------------------------------------------------------------------------------------------");
         Random rand = new Random();
@@ -1067,7 +1067,7 @@ public class dnd
         }
     }
 
-    void auth() 
+    void auth()
     {
         System.out.println("\nINTRODUCTION: Welcome to Dungeons & Dragons, a text-based game with an adventurous storyline and a thrilling gameplay.");
         System.out.println("This is the third beta version of the game which focuses on the overall gameplay and various interactive senarios in the town.");
@@ -1084,7 +1084,7 @@ public class dnd
         else
         {
             System.out.println("Invalid Key");
-            System.out.println("Now a betatester? SIGN UP NOW for an early hands on of the game!");
+            System.out.println("Not a betatester? STAY TUNED for an early hands on of the game!\nExclusively available on GitHub.");
             exit();
         }
     }
@@ -1098,3 +1098,4 @@ public class dnd
         ob.auth();
     }
 }
+	
