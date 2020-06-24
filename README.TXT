@@ -24,7 +24,7 @@ Since this is a beta release, you may encouter few bugs throughout the gameplay.
 --------------------
 
 STEPS TO START THE GAME (for Blue J):  
-   Step 1. Create a new class. Then copy and pase the source code.  
+   Step 1. Create a new class. Then copy and paste the source code.  
    Step 2- Right click on the program file in BlueJ's main window, and then.
    Step 3- Left click on the void main(String[]args) tab:
    Step 4- A window will pop up: Left click on OK to run the program. The game will start in BlueJ's "terminal" window.
