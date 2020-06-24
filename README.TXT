@@ -7,7 +7,7 @@ PURPOSE OF PROJECT: Text based game
 VERSION or DATE: v4.0 Open Beta | Released on 24 JUNE 2020 
 HOW TO START THIS PROJECT: Runs on Blue J or similar JVM Compatible App
 AUTHORS: Pratyush Kumar
-USER INSTRUCTIONS: This is a pre-release beta version of the game. You might encounter unexpected errors and bugs during the execution of the source code. If you find any such errors/ bugs, please raise an Issue or a Pull Request. 
+USER INSTRUCTIONS: This is a pre-release beta build of the game. You might encounter unexpected errors and bugs during the execution of the source code. If you find any such errors/ bugs, please raise an Issue or a Pull Request. 
                     
 INTRODUCTION: Welcome to Dungeons & Dragons, a text-based game with an adventurous storyline and a thrilling gameplay.
 This is the fourth & the last beta version of the game which focuses on developer functions and newly introduced interactive senarios in the town.
