@@ -18,6 +18,7 @@ public class dnd
     int exploretag;
     int round;
     int missiontag;
+    int admin;
 
     dnd() //default values
     {
@@ -34,14 +35,17 @@ public class dnd
         exploretag=0;
         round=0;
         missiontag=0;
+        admin=0;
     }
 
     void startmenu()
     {
         System.out.println("-----------------------\nSTART MENU\n-----------------------");
         System.out.println("1. Story Mode\n2. Explore\n3. Settings\n4. Exit");
+        if(admin==1){
+            System.out.println("5. Exit Admin Module");
+        }
         int ch= sc.nextInt();
-
         if(ch==1)
         {
             playerSetUp();
@@ -52,11 +56,30 @@ public class dnd
         }
         else if(ch==3)
         {
-            settings();
+            if(admin==1)
+                settings();
+            else
+                playersettings();
+        }
+        else if(ch==4)
+        {
+            exit();
+        }
+        else if(ch==5)
+        {
+            if(admin==1){
+                admin=0;
+                System.out.println("\nADMIN MODULE DISABLED\n");
+                System.out.println("Loading Regular Game...\n");
+                startmenu();
+            }
+            else{
+                startmenu();
+            }
         }
         else
         {
-            exit();
+            startmenu();
         }
     }
 
@@ -96,7 +119,7 @@ public class dnd
         String resp=sc.nextLine();
         if(resp.equals("C"))
         {
-            tower();
+            palaceGate();
         }
         else
         {
@@ -117,7 +140,7 @@ public class dnd
         System.out.println("");
         System.out.println("1: Talk to the guards");
         System.out.println("2: Attack the guards");
-        System.out.println("3: Go back to Ding Dong Tower");
+        System.out.println("3:  to Ding Dong Tower");
         System.out.println("\n------------------------------------------------------------------\n");
 
         int ch= sc.nextInt();
@@ -536,7 +559,7 @@ public class dnd
         System.out.println("        The Lucky Bucky      ");
         System.out.println("********************************");
         System.out.println("You have 5 chances to guess the 5 lucky numbers ranging from 1 to 100. The numbers generated shall be totally random.");
-        System.out.println("The game is based on your guess and luck. For every number gussed correctly, you get $100. ;)");
+        System.out.println("The game is based on your guess and luck. For every number guessed correctly, you get $100. ;)");
         System.out.println("--------------------------------------------------------------------------------------------------------------------");
         Random rand = new Random();
         int x=5;
@@ -722,7 +745,7 @@ public class dnd
         System.out.println("********************************");
         System.out.println("Where would you like to travel to?");
         System.out.println("\n------INTER-KINGDOM TRAINS------");
-        System.out.println("1: Kingdom of Kaza");
+        System.out.println("1: Kingdom of Oryn");
 
         System.out.println("\n0: Teleport to Ding Dong Tower");
         System.out.println("\n------------------------------------------------------------------\n");
@@ -776,22 +799,27 @@ public class dnd
     public void west()
     {
         System.out.println("***********************************");
-        System.out.println("WEST: Clove Mountains Base Station");
+        System.out.println(" WEST: Clove Mountains Base Station");
         System.out.println("***********************************");
         if(missiontag==0){
             if(magicspell==0){
                 if(dodo==1)
                 {
-                    System.out.println("-------------------------------");
+                    System.out.println("###############################");
                     System.out.println("         DRAGON'S LAIR         ");
-                    System.out.println("-------------------------------");
+                    System.out.println("###############################");
                     System.out.println("----------Storyline-------------");
-                    System.out.println("      UNDER DEVELOPEMENT!       ");
-                    System.out.println("--------------------------------");
-                    System.out.println("Objective: You found the dragon. Kill the dragon & get the magic spell.");
+                    System.out.println("Dragon: You've gone off the rails by coming here....");
+                    System.out.println("Respond: ");
+                    enterScanner.nextLine();
+                    System.out.println("Dragon: You shall go right away. I'll roast you like peanuts if you don't move your arse.");
+                    System.out.println("Respond: ");
+                    enterScanner.nextLine();
+                    System.out.println("---------------------------------------------------------------------------------------");
+                    System.out.println("Objective: You found the dragon. Beat the tar out of the dragon & get the magic spell.");
                     System.out.println("1: Fight");
                     System.out.println("2: Run Away");
-                    System.out.println("\n------------------------------------------------------------------\n");
+                    System.out.println("\n-------------------------------------------------------------------------------------\n");
 
                     int ch=sc.nextInt();
 
@@ -810,9 +838,10 @@ public class dnd
                 }
                 else
                 {
-                    System.out.println("Serviceman: STOP! You cannot go any further. The road towards the hilltop is broken.");
+                    System.out.println("Serviceman: STOP! You cannot go any further. Landslides have destroyed the road leadint ot the hilltop.");
                     System.out.print("Respond: ");
                     enterScanner.nextLine();
+                    System.out.println("Serviceman: You can get up there by flying. But beware! Tresspassing in the dragon's territory is more brutal than jumping inside an active volcano!");  
                     tower();
                 }
             }
@@ -867,7 +896,7 @@ public class dnd
         }
     }
 
-    public void attack()//beta3
+    public void attack()//beta4
     {
         int playerDamage =0;
 
@@ -973,7 +1002,7 @@ public class dnd
         {
             System.out.print("You left the spell behind");
             System.out.println("------------------------");
-            System.out.println("MISSION FAILED :(");
+            System.out.println("    MISSION FAILED :(   ");
             System.out.println("------------------------");
             magicspell=0;
             System.out.println("\n------------------------------------------------------------------\n");
@@ -991,7 +1020,7 @@ public class dnd
 
     public void ending(){
         System.out.println("******CHAPTER II******");
-        System.out.println("      Coming soon.... ");
+        System.out.println("     Coming soon.... ");
         System.out.println("\n\n--------------THE END-----------------");
         System.out.println("*****************DUNGEONS & DRAGONS***************");
         System.out.println("\n\n          A game by Pratyush Kumar            ");    
@@ -1002,62 +1031,91 @@ public class dnd
         System.out.println("-------Goodbye!-------");
     }
 
-    public void settings()
+    private void settings()
     {
         System.out.println("-----------------------");
-        System.out.println("GAME SETTINGS");
+        System.out.println("DEVELOPER GAME SETTINGS ");
         System.out.println("-----------------------");
-        System.out.println("1. Update Player HP\n2. Update Monster HP\n3. Check for Game Updates");
-        if(prodkey.equals("admin"))
-        {
-            System.out.println("4. Update Player Money");
-        }
+        System.out.println("1. Update Player HP\n2. Update Monster HP\n3. Update Player Money\n4. Check Game Version\n\n0. Go Back to Start Menu");
         System.out.println("-----------------------------------------------------------------------------");
         int ch=sc.nextInt();
 
         if(ch==1)
         {
-            System.out.println("  Default Player HP: 10");
-            System.out.print("  Enter new Player HP: ");
+            System.out.println("Default Player HP: 10");
+            System.out.print("Enter new Player HP: ");
             playerHP=sc.nextInt();
             System.out.println("  Update Successful! ");
             System.out.println("Loading Game.....");
-            startmenu();
+            settings();
         }
         else if(ch==2)
         {
-            System.out.println("  Default Monster HP: 15");
-            System.out.print("  Enter new Player HP: ");
+            System.out.println("Default Monster HP: 15");
+            System.out.print("Enter new Player HP: ");
             monsterHP=sc.nextInt();
             System.out.println("  Update Successful! ");
             System.out.println("Loading Game.....");
-            startmenu();
-        }
-        else if(ch==3)
-        {
-            System.out.print("Checking for Updates....");
-            System.out.println("Game is up to date");
-            System.out.println("Beta 3 Edition II");
-            startmenu();
+            settings();
         }
         else if(ch==4)
         {
+            System.out.println("Current Version: v4.0 Open Beta");
+            System.out.println("Released   on  : 24 JUNE 2020   ");
+            System.out.println("Check out the GitHub page of the game for latest updates!");
+            settings();
+        }
+        else if(ch==3)
+        {
             System.out.println("Default Player Money(at start): 0");
-            System.out.print(" Enter new Player money: ");
+            System.out.print("Enter new Player money: ");
             money=sc.nextInt();
             System.out.println("  Update Successful! ");
             System.out.println("Loading Game.....");
+            settings();
+        }
+        else if(ch==0){
             startmenu();
+        }
+        else{
+            settings();
         }
     }
 
     void explore()
     {
-        //System.out.println("-----WELCOME TO COCO KINGDOM-----");
-        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        System.out.println("THIS MODULE IS STILL UNDER DEVELOPEMENT");
-        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println("**********************************");
+        System.out.println("  WELCOME TO THE TOWN OF KAZA   ");
+        System.out.println("**********************************");
+        System.out.println("Forged on the Northern side of Kingdom Vanaheim, on the banks of river Sipu and surrounded by Clove Mountains on the west,\n the hamlet of Kaza is home to a polulation of around 200 people, led by King Victor.\n");
+        System.out.println("With its settlements of galvanised steel rooftops, decaying walls and foggy surroundings, Kaza has a desolate atmosphere.\nThe main attraction is the Ding Dong Tower, which was built 55 years ago and designed by wood elves.\n");
+        System.out.println("Kaza has an advancing economy, which is mainly supported by alchemy, fishing and crafting. But their biggest strengths are\nhighly skilled thieving and rare wood production.\n");
+        System.out.println("With the advent of \n");
+        System.out.println("On one side of the planet, everything is lush and beautiful- and there are virtually no prey.\nOn the other side of the town, on the top of Clove Mountains, everything is scorched. Dragons have anhilitated much of the other species.\n");
+        System.out.println("Kaza lacks people skilled in war. The king's men have been trying to reach the capital of the Kingdom for centuries,\nbut they cannot cross the mountains, as their skin would melt under the heat of the powerful and mighty Dragons.");
+        System.out.println("This once beautiful place is beginning to fall apart due to pack wars. There's someone who needs to end this.\n");
         System.out.println("|Press any key to continue|");
+        enterScanner.nextLine();
+        System.out.println("Guide: So, ladies & gentlemen, hold on to your breath because we are about to fly past the iconic Ding Dong Tower!");
+        System.out.print("Respond: ");
+        enterScanner.nextLine();
+        System.out.println("\nGuide: The North of the hamlet is where you will find the settlements- beautiful dwarf-built bamboo houses roofed in slate.\nThose old, filthy rowing boats you see there, docked beisdes the river Sipu are meant for fishing.\nRiver Sipu, once filled with freshwater fishes; now you won't even find planktons.");
+        System.out.print("Respond: ");
+        enterScanner.nextLine();
+        System.out.println("\nGuide: We are now flying above the famous and the only market, east of the town. From weapons to artillery, magic spells to magic 'powder';\nyou'll find everything here!\nAnd that's Lucky Bucky, every youngster's hangout place. Here wealthy win big while poor remain poor.");
+        System.out.print("Respond: ");
+        enterScanner.nextLine();
+        System.out.println("\nGuide: Look down people...before your eyes pop out, thats the majectic Palace of the King Victor.\nAnd yes! that's where you get executed if you don't follow the rules here. Be careful, you'll thank me later. ");
+        System.out.print("Respond: ");
+        enterScanner.nextLine();
+        System.out.println("\nGuide: Last but not the least, at the horizon you could see the Clove Mountains. Bravest of the brave fear climbing up that\nnasty little thing. Don't ever try to go up the top unless you wanna get 'roasted'.");  
+        System.out.print("Respond: ");
+        enterScanner.nextLine();
+        System.out.println("\nGuide:Okay impoverished people, that's what you get for what you pay for. Don't forget to tip me otherwise i'll throw you in that 'dungeon'...");  
+        System.out.print("Respond: ");
+        enterScanner.nextLine();
+
+        System.out.println("\n|Press any key to continue|");
         enterScanner.nextLine();
         if(dodo==1){
             dodoport();
@@ -1067,23 +1125,114 @@ public class dnd
         }
     }
 
+    private void admincenter()
+    {
+        System.out.print("Enter Unique Key: ");
+        String uniquekey=enterScanner.nextLine();
+        if(uniquekey.equals("ADmIn")){
+            System.out.println("***********************");
+            System.out.println("Admin Module Activated");
+            System.out.println("***********************");
+            admin=1;
+            startmenu();
+        }
+        else{
+            System.out.println("\nAccess Denied");
+            System.out.println("\nLoading Normal Game...\n");
+            startmenu();
+        }
+    }
+
+    public void playersettings()
+    {
+        System.out.println("-----------------------");
+        System.out.println("     GAME SETTINGS     ");
+        System.out.println("-----------------------");
+        System.out.println("1.Change Difficulty level\n2.Player Stats\n3.Game Controls\n4.Game Version\n\n0.Go Back to Start Menu");
+        System.out.println("-----------------------------------------------------------------------------");
+        int ch=sc.nextInt();
+        String difficultylvl="As Easy As Saying Chickens";
+        if(ch==1)
+        {
+            System.out.println("Current Difficulty Level: "+difficultylvl);
+            System.out.println("\nChoose different difficulty level:");
+            System.out.println("1. As Easy As Saying Chickens\n2. Work Your Fingers to The Bone\n3. Blood, Sweat and Tears");
+            int choice=sc.nextInt();
+            if(choice==1){
+                playerHP=10;
+                monsterHP=15;
+                difficultylvl="As Easy As Saying Chickens";
+                System.out.println("  Update Successful! ");
+                System.out.println("Loading Game.....");
+                playersettings();
+            }
+            if(choice==2){
+                playerHP=10;
+                monsterHP=15;
+                difficultylvl="Work Your Fingers to The Bone";
+                System.out.println("  Update Successful! ");
+                System.out.println("Loading Game.....");
+                playersettings();
+            }
+            if(choice==3){
+                playerHP=10;
+                monsterHP=15;
+                difficultylvl="Blood, Sweat and Tears";
+                System.out.println("  Update Successful! ");
+                System.out.println("Loading Game.....");
+                playersettings();
+            }
+        }
+        else if(ch==2){
+            System.out.println("Player HP: "+ playerHP);
+            System.out.println("Current Weapon: "+ playerWeapon);
+            System.out.println("$: "+money);
+            System.out.println("\n|Press any key to continue|");
+            enterScanner.nextLine();
+            playersettings();
+        }
+        else if(ch==3){
+            System.out.println("Game Controls");
+            System.out.println("NOT UPDATED YET");
+            System.out.println("\n|Press any key to continue|");
+            enterScanner.nextLine();
+            playersettings();
+        }
+        else if(ch==4){
+            System.out.println("Current Version: v4.0 Open Beta");
+            System.out.println("Released   on  : 24 JUNE 2020   ");
+            System.out.println("Check out the GitHub page of the game for latest updates!");
+            playersettings();
+        }
+        else if(ch==0){
+            startmenu();
+        }
+        else{
+            playersettings();
+        }
+    }
+
     void auth()
     {
         System.out.println("\nINTRODUCTION: Welcome to Dungeons & Dragons, a text-based game with an adventurous storyline and a thrilling gameplay.");
-        System.out.println("This is the third beta version of the game which focuses on the overall gameplay and various interactive senarios in the town.");
-        System.out.println("Only a partial storyline is available in this version. However, there are enough hints to help you navigate through the little town.\n Since this is a beta release, you may encouter several bugs throughout the gameplay.");
+        System.out.println("This is the fourth & the last beta version of the game which focuses on developer functions and newly introduced interactive senarios in the town.");
+        System.out.println("Major part of the storyline is now available in this version. However, in case you face any difficulty, there are enough hints to help you navigate through the little town.\nSince this is a beta release, you may encouter few bugs throughout the gameplay.");
         System.out.println("\n*****CHANGELOG*****");
-        System.out.println("1.NOW OPEN: Dodo Port & Great Easton Railway Station\n2.NOW AVAILABLE: Player Customisation & Player Responses\n3.Stability & Bug Fixes\n4.Improved Quality of Life & Gameplay Experiences");
+        System.out.println("1.NOW AVAILABLE: Explore Module & Sight-Seeing Senario\n2.Refined dialogues & Player Interactions\n3.Introducing Administrator Module & Different Settings Menu for developers\n4.Redesigned Settings Menu\n5.Minor Bug Fixes\n6.Improved Gameplay Experience");
         System.out.println("--------------------");
         System.out.print("\nThe game is open to beta testers only.\nPlease enter the Product Key to continue: ");
         prodkey=sc.nextLine();
-        if(prodkey.equals("betatester")||prodkey.equals("admin"))
+        if(prodkey.equals("betatester"))
         {
             startmenu();
         }
+        else if(prodkey.equals("admin"))
+        {
+            admincenter();
+        }
         else
         {
-            System.out.println("Invalid Key");
+            System.out.println("Invalid Key\n");
             System.out.println("Not a betatester? STAY TUNED for an early hands on of the game!\nExclusively available on GitHub.");
             exit();
         }
@@ -1094,8 +1243,7 @@ public class dnd
         dnd ob=new dnd();
         System.out.println("******************************");
         System.out.println("     DUNGEONS & DRAGONS       ");
-        System.out.println("**********Beta 3.5***********");
+        System.out.println("************Beta 4************");
         ob.auth();
     }
 }
-	
