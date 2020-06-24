@@ -1244,6 +1244,6 @@ public class dnd
         System.out.println("******************************");
         System.out.println("     DUNGEONS & DRAGONS       ");
         System.out.println("************Beta 4************");
-        ob.auth();
+        ob.auth(); 
     }
 }
