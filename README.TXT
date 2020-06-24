@@ -7,7 +7,7 @@ PURPOSE OF PROJECT: Text based game
 VERSION or DATE: v4.0 Open Beta | Released on 24 JUNE 2020 
 HOW TO START THIS PROJECT: Runs on Blue J or similar JVM Compatible App
 AUTHORS: Pratyush Kumar
-USER INSTRUCTIONS: This is a pre-release beta version of the game. You might encounter unexpected errors and bugs during the execution of the source code. If you find any such errors/ bugs, please raise an Issue or Pull Request. 
+USER INSTRUCTIONS: This is a pre-release beta version of the game. You might encounter unexpected errors and bugs during the execution of the source code. If you find any such errors/ bugs, please raise an Issue or a Pull Request. 
                     
 INTRODUCTION: Welcome to Dungeons & Dragons, a text-based game with an adventurous storyline and a thrilling gameplay.
 This is the fourth & the last beta version of the game which focuses on developer functions and newly introduced interactive senarios in the town.
@@ -29,6 +29,8 @@ Since this is a beta release, you may encouter few bugs throughout the gameplay.
    Step 3- Left click on the void main(String[]args) tab:
    Step 4- A window will pop up: Left click on OK to run the program. The game will start in BlueJ's "terminal" window.
    
-   GAME CONTROLS: Since its a text based game, you won't require arrow   
+   GAME CONTROLS: Since its a text based game, you won't require arrow keys to control. Instead, you control your in-game character via a set of instructions that
+                  appear on screen. Please remember, some commands might be case sensitive and can result in an error if not entered in the correct case.    
+   
    
    P.S.: The game is open to beta testers only and requires an Unique Key to play ;)
