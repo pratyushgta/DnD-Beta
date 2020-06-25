@@ -1247,5 +1247,5 @@ public class dnd
         System.out.println("     DUNGEONS & DRAGONS       ");
         System.out.println("***********Beta 4.5***********");
         ob.auth();
-    }
+    } 
 }
