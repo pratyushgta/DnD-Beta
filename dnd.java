@@ -810,10 +810,10 @@ public class dnd
                     System.out.println("###############################");
                     System.out.println("----------Storyline-------------");
                     System.out.println("Dragon: You've gone off the rails by coming here....");
-                    System.out.println("Respond: ");
+                    System.out.print("Respond: ");
                     enterScanner.nextLine();
                     System.out.println("Dragon: You shall go right away. I'll roast you like peanuts if you don't move your arse.");
-                    System.out.println("Respond: ");
+                    System.out.print("Respond: ");
                     enterScanner.nextLine();
                     System.out.println("---------------------------------------------------------------------------------------");
                     System.out.println("Objective: You found the dragon. Beat the tar out of the dragon & get the magic spell.");
@@ -842,6 +842,8 @@ public class dnd
                     System.out.print("Respond: ");
                     enterScanner.nextLine();
                     System.out.println("Serviceman: You can get up there by flying. But beware! Tresspassing in the dragon's territory is more brutal than jumping inside an active volcano!");  
+                    System.out.print("Respond: ");
+                    enterScanner.nextLine();
                     tower();
                 }
             }
@@ -1060,8 +1062,8 @@ public class dnd
         }
         else if(ch==4)
         {
-            System.out.println("Current Version: v4.0 Open Beta");
-            System.out.println("Released   on  : 24 JUNE 2020   ");
+            System.out.println("Current Version: v4.5 Open Beta");
+            System.out.println("Released   on  : 25 JUNE 2020   ");
             System.out.println("Check out the GitHub page of the game for latest updates!");
             settings();
         }
@@ -1168,7 +1170,7 @@ public class dnd
             }
             if(choice==2){
                 playerHP=10;
-                monsterHP=15;
+                monsterHP=18;
                 difficultylvl="Work Your Fingers to The Bone";
                 System.out.println("  Update Successful! ");
                 System.out.println("Loading Game.....");
@@ -1176,7 +1178,7 @@ public class dnd
             }
             if(choice==3){
                 playerHP=10;
-                monsterHP=15;
+                monsterHP=20;
                 difficultylvl="Blood, Sweat and Tears";
                 System.out.println("  Update Successful! ");
                 System.out.println("Loading Game.....");
@@ -1199,8 +1201,8 @@ public class dnd
             playersettings();
         }
         else if(ch==4){
-            System.out.println("Current Version: v4.0 Open Beta");
-            System.out.println("Released   on  : 24 JUNE 2020   ");
+            System.out.println("Current Version: v4.5 Open Beta");
+            System.out.println("Released   on  : 25 JUNE 2020   ");
             System.out.println("Check out the GitHub page of the game for latest updates!");
             playersettings();
         }
@@ -1243,7 +1245,7 @@ public class dnd
         dnd ob=new dnd();
         System.out.println("******************************");
         System.out.println("     DUNGEONS & DRAGONS       ");
-        System.out.println("************Beta 4************");
+        System.out.println("***********Beta 4.5***********");
         ob.auth();
     }
 }
