@@ -17,7 +17,7 @@ Please Note: The game is set to officially roll out on JULY 5. However, this dat
 Since this is an early preview of the game, you may encouter a few bugs throughout the gameplay.
 
 *****CHANGELOG*****
-1.Refined asset & senario names 
+1.Refined asset & scenario names 
 2.Polished dialogues, storyline & Player Interactions
 3.Minor Bug Fixes
 4.Quality of Life improvements
