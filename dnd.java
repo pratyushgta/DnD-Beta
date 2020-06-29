@@ -169,7 +169,7 @@ public class dnd
                     System.out.println("Guard: We respect your benevolence and valour. Welcome to the Palace!");
                     System.out.print(playerName+": ");
                     enterScanner.nextLine();
-                    System.out.println("\n--------------------------------------------------------------------------------\n");
+                    System.out.println("\n---------------------------------------------------------------------------\n");
                     System.out.println("King Victor has awarded you with the Medal of Honour for your courage and bravery!\n");
                     System.out.println("-------------------------------");
                     System.out.println("MISSION PASSED!\nBonus: $300");
@@ -187,7 +187,7 @@ public class dnd
                     System.out.print(playerName+": ");
                     String resp=enterScanner.nextLine();
                     System.out.println("Guard 2: Our honour has given you a task to complete. You aren't welcomed before that.");
-                    System.out.println("\n------------------------------------------------------------------------------------\n");
+                    System.out.println("\n------------------------------------------------------------------\n");
                     System.out.println("|Press any key to continue|");
                     enterScanner.nextLine();  
                     palaceGate();
@@ -1295,7 +1295,7 @@ public class dnd
     {
         System.out.println("\nWelcome to Dungeons & Dragons, a text-based, open world game with an adventurous storyline and a thrilling gameplay.");
         System.out.println("From the thrills to sound of geese calling at night, to the whispering wind through the pines, to the unexpected red of mistletoe on an oak;\nembark on an action-packed adventure in worlds of swords and sorcery.\nDelve into an immersive experience as you explore the mysterious little town of Kaza, full of various elements of surprise.\n");
-
+       
         System.out.println("This is a pre-release developer preview of the game which focuses on the overall gameplay and quality of life changes.");
         System.out.println("This is the FINAL version of the game and shall undergo extensive testing to obsure errors and bugs, before rolling out the public release.");
         System.out.println("Please Note: The game is set to officially roll out on JULY 5. However, this date might change depending upon further developement constraints.\nSince this is an early preview of the game, you may encouter a few bugs throughout the gameplay.\n");
