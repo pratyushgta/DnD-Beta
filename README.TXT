@@ -13,8 +13,6 @@ INTRODUCTION: Welcome to Dungeons & Dragons, a text-based game with an adventuro
 This is a pre-release developer preview of the game which focuses on the overall gameplay and quality of life changes.
 This is the FINAL version of the game and shall undergo extensive testing to obsure errors and bugs, before rolling out the public release.
 
-Please Note: The game is set to officially roll out on JULY 5. However, this date might change depending upon further developement constraints.
-Since this is an early preview of the game, you may encouter a few bugs throughout the gameplay.
 
 *****CHANGELOG*****
 1.Refined asset & scenario names 
