@@ -28,10 +28,10 @@ the town will also feature some hidden gems, revealing in future updates.
 
 --------------------
 
-**Minimum Requirements**
+Minimum Requirements : 
 The game is best experienced on PC having BlueJ, IntelliJ or a similar Java IDE.
 
-**Steps to Start the Game (for BlueJ)**
+Steps to Start the Game (for BlueJ) :
 - Create a new class. Then copy and paste the source code.  
 - Right click on the program file in BlueJ's main window, and then,
 - Left click on the void main(String[]args) tab.
@@ -39,7 +39,7 @@ The game is best experienced on PC having BlueJ, IntelliJ or a similar Java IDE.
 
 OR, you can also use the IDE's inbuilt VCS cloning feature to directly import the files. 
 
-**In-game Controls**
+In-game Controls :
 Since its a text based game, you won't require arrow keys to control. Instead, you control your in-game character via a set of instructions that  appear on screen. Please remember, some commands might be case sensitive and can result in an error if not entered in the correct case.    
 
 
