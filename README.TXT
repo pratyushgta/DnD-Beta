@@ -43,6 +43,6 @@ In-game Controls :
 Since its a text based game, you won't require arrow keys to control. Instead, you control your in-game character via a set of instructions that  appear on screen. Please remember, some commands might be case sensitive and can result in an error if not entered in the correct case.    
 
 
-   
+ This version is unstable and might not satisfy the intended compatibility requirements as denoted by its associated normal version. To play the normal version of the game, head to pratyushgta/DnD-The-Game or simply click here: https://github.com/pratyushgta/DnD-The-Game   
   
 *A game by Pratyush @pratyushgta & contributed by Rahil @Boltonb07*
