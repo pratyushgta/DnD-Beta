@@ -1,9 +1,13 @@
 import java.util.*;
 import java.util.Random;
-public class dnd
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class dndbeta
 {
     Scanner sc = new Scanner(System.in);
     Scanner enterScanner = new Scanner(System.in);
+    SimpleDateFormat sdf = new SimpleDateFormat("HH.mm");
+    Date dateobj = new Date();
 
     int playerHP;
     String playerName;
@@ -19,8 +23,10 @@ public class dnd
     int missiontag;
     int admin;
     int easter;
+    double time;
+    String printTime;
 
-    dnd() //default values
+    dndbeta() //default values
     {
         playerHP=10;
         playerName="";
@@ -36,6 +42,8 @@ public class dnd
         missiontag=0;
         admin=0;
         easter=0;
+        printTime=sdf.format(dateobj);
+        time=Double.valueOf(printTime); //timeModule_x1
     }
 
     void startmenu()
@@ -94,25 +102,26 @@ public class dnd
         System.out.println("----------------");
         System.out.println("Your HP: "+ playerHP);
         System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("Time: "+time);
         System.out.println("$: "+money);
         System.out.println("----------------");
 
         System.out.println("|Press any key to continue|");
         enterScanner.nextLine();
-        senario1();      
+        scenario1();      
     }
 
-    void senario1()
+    void scenario1()
     {
         System.out.println("************************************************");
         System.out.println("CHAPTER 1: A WARRIOR IN NEED IS A WARRIOR INDEED");
         System.out.println("************************************************");
-        System.out.println("After passing through the craggy peaks, the road takes a sudden turn to the Victor Palace that towers before you.\nCrumbling towers of stone keep a silent watch over the approach. With abandoned guardhouses, the hamlet looks unhabited for years.");
+        System.out.println("After passing through the craggy peaks, the road takes a sudden turn to the Victor Palace that towers before you.\nCrumbling towers of stone keep a silent watch over the approach. With abandoned guardhouses and ramshackle cottages,\nthe hamlet looks inhabited for years.");
         System.out.println("Beyond these,a lowered drawbridge, disappearing into the deep fog below; leading to an arched entrance to the castle courtyard.\nThe chains of the drawbridge creak in the wind, their rust-eaten iron straining with the weight.");
         System.out.println("A rotting wooden portcullis, green with growth, hangs in the entry tunnel.\nBeyond this, the main doors of Victor Palace stand open, a rich warm light spilling into the courtyard.");
         System.out.println("\n|Press any key to continue|\n");
         enterScanner.nextLine();
-        System.out.println("King Victor: It has been seven brutal years. The town is in a dire straits and our army men have turned out to be helpless.");
+        System.out.println("King Victor: It has been seven brutal years. The town is in dire straits and our army men have turned out to be helpless.");
         System.out.print(playerName+": ");
         enterScanner.nextLine();
         System.out.println("\nKing Victor: Seven years ago, the filthy dragons managed to purloin the magic spell which makes them invincible, from the town's safe.");
@@ -127,6 +136,7 @@ public class dnd
         money=money+50;
         System.out.println("Your HP: "+ playerHP);
         System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("Time: "+time);
         System.out.println("$: "+money);
         System.out.println("----------------");
         System.out.println("|Press C to continue|");
@@ -138,7 +148,7 @@ public class dnd
         else
         {
             easter=1;
-            senario1();
+            scenario1();
         }
     }
 
@@ -161,48 +171,57 @@ public class dnd
 
         if(ch==1)
         {
-            if(missiontag==0){
-                if(magicspell==1)
-                {
-                    System.out.println("\n---------------------------------------------------------------------------\n");
-                    System.out.println("Guard: You killed the dragon! Unbelieveable! It was a huge burden for our town.");
-                    System.out.println("Guard: We respect your benevolence and valour. Welcome to the Palace!");
-                    System.out.print(playerName+": ");
-                    enterScanner.nextLine();
-                    System.out.println("\n---------------------------------------------------------------------------\n");
-                    System.out.println("King Victor has awarded you with the Medal of Honour for your courage and bravery!\n");
-                    System.out.println("-------------------------------");
-                    System.out.println("MISSION PASSED!\nBonus: $300");
-                    money=money+300;
-                    System.out.println("-------------------------------");  
-                    System.out.println("Your $: "+money);
-                    System.out.println("\n|Press any key to continue|");
-                    magicspell=0;
-                    missiontag=1;
-                    tower();
-                }
-                else
-                {
-                    System.out.println("Guard 1: Stop! You are not allowed beyond this point.");
-                    System.out.print(playerName+": ");
-                    String resp=enterScanner.nextLine();
-                    System.out.println("Guard 2: Our honour has given you a task to complete. You aren't welcomed before that.");
-                    System.out.println("\n------------------------------------------------------------------\n");
-                    System.out.println("|Press any key to continue|");
-                    enterScanner.nextLine();  
-                    palaceGate();
-
-                }
+            if(time<6){
+                System.out.println("Guard: The king is enjoying his night. Come back in the morning.");
+                System.out.print(playerName+": ");
+                enterScanner.nextLine();
+                System.out.println("\n------------------------------------------------------------------\n");
+                palaceGate();
             }
             else{
-                System.out.println("Guard 1: Welcome to the palace of King Victor. Would you like to meet the king?");
-                System.out.print(playerName+": ");
-                String resp=enterScanner.nextLine();
-                System.out.println("Guard 2: The king has left for a long voyage to explore far off lands. Please come back later.");
-                System.out.println("\n--------------------------------------------------------------------------------------------\n");
-                System.out.println("|Press any key to continue...|");
-                enterScanner.nextLine();  
-                palaceGate();
+                if(missiontag==0){
+                    if(magicspell==1)
+                    {
+                        System.out.println("\n---------------------------------------------------------------------------\n");
+                        System.out.println("Guard: You killed the dragon! Unbelievable! It was a huge burden for our town.");
+                        System.out.println("Guard: We respect your benevolence and valor. Welcome to the Palace!");
+                        System.out.print(playerName+": ");
+                        enterScanner.nextLine();
+                        System.out.println("\n--------------------------------------------------------------------------------\n");
+                        System.out.println("King Victor has awarded you with the Medal of Honour for your courage and loyalty!\n");
+                        System.out.println("-------------------------------");
+                        System.out.println("MISSION PASSED!\nBonus: $300");
+                        money=money+300;
+                        System.out.println("-------------------------------");  
+                        System.out.println("Your $: "+money);
+                        System.out.println("\n|Press any key to continue|");
+                        magicspell=0;
+                        missiontag=1;
+                        tower();
+                    }
+                    else
+                    {
+                        System.out.println("Guard 1: Stop! You are not allowed beyond this point.");
+                        System.out.print(playerName+": ");
+                        String resp=enterScanner.nextLine();
+                        System.out.println("Guard 2: Our highness has given you a task to complete. You aren't welcomed before that.");
+                        System.out.println("\n------------------------------------------------------------------\n");
+                        System.out.println("|Press any key to continue|");
+                        enterScanner.nextLine();  
+                        palaceGate();
+
+                    }
+                }
+                else{
+                    System.out.println("Guard 1: Welcome to the palace of King Victor. Would you like to meet the king?");
+                    System.out.print(playerName+": ");
+                    String resp=enterScanner.nextLine();
+                    System.out.println("Guard 2: The king has left for a long voyage to explore far off lands. Please come back later.");
+                    System.out.println("\n--------------------------------------------------------------------------------------------\n");
+                    System.out.println("|Press any key to continue...|");
+                    enterScanner.nextLine();  
+                    palaceGate();
+                }
             }
         }
 
@@ -211,7 +230,7 @@ public class dnd
             if(playerHP>0)
             {
                 System.out.println("Guards: So you've chosen death. No one messes around with the King's men!");
-                System.out.println("*The strong men fought furiously and left you injured*\n(You lose 1 HP)");
+                System.out.println("*The powerful men fought furiously and left you injured*\n(You lose 1 HP)");
                 playerHP = playerHP-1;
                 System.out.println("Your HP: " + playerHP);
                 System.out.println("|Press any key to continue|");
@@ -227,6 +246,7 @@ public class dnd
                     System.out.println("----------------");
                     System.out.println("Your HP: "+ playerHP);
                     System.out.println("Current Weapon: "+ playerWeapon);
+                    System.out.println("Time: "+time);
                     System.out.println("$: "+money);
                     System.out.println("----------------");
                     east();
@@ -299,89 +319,119 @@ public class dnd
         System.out.println("Where would you like to head next?");
         System.out.println("1: Visit Friend's House ");
         System.out.println("2: Fishing");
+        System.out.println("3: Gladiator Coliseum");
         System.out.println("\n0: Teleport to Start Menu");
         System.out.println("\n------------------------------------------------------------------\n");
         int ch=sc.nextInt();
         if(ch==1)
         {
-            if(sidemissiontag==2)
-            {
-                System.out.println("-------------------------------------------------");
-                System.out.println("Your friend isn't at his home. Come again later!");
-                System.out.println("-------------------------------------------------");
-                System.out.println("|Press any key to continue...|");
+            if(time>22 || time<6){              
+                System.out.println("Friend: Down for the night. See ya later!");
+                System.out.print(playerName+": ");
                 enterScanner.nextLine();
+                System.out.println("-------------------------------------------");
+                north();
             }
             else{
-                System.out.println("*****************************");
-                System.out.println("Side Mission: A Helping Hand");
-                System.out.println("*****************************");
-                System.out.println("Friend: Hey "+playerName+"! Long time no see..Where have you been all this while!?");
-                System.out.print(playerName+": ");
-                enterScanner.nextLine();
-                System.out.println("\nFriend: Whats brings you here buddy!?");
-                System.out.print(playerName+": ");
-                enterScanner.nextLine();
-                System.out.println("\nFriend: Things aren't going great lately. The dragon....");
-                System.out.print(playerName+": ");
-                enterScanner.nextLine();
-                System.out.println("\nFriend: The dragon has blazed up all my paddy fields; my livelihood is at stake, I owe a debt of gratitude to my closest friends..\nI am afraid of losing them if I don't payback. Would you help me in repaying my debts?");
-                System.out.print(playerName+": ");
-                enterScanner.nextLine();
-                System.out.println("----------------------------------------------------------------------");
-                System.out.println("Objective: Help your friend repay his debts by playing The Lucky Bucky");
-                System.out.println("----------------------------------------------------------------------");
-                System.out.println("|Press Y for Yes or N for Next time maybe |");
-                String resp=enterScanner.nextLine();
-                if(resp.equals("Y"))
+                if(sidemissiontag==2)
                 {
-                    sidemissiontag=1;
-                    gameparlour();
+                    System.out.println("--------------------------------------------");
+                    System.out.println("Your friend isn't at home. Come again later!");
+                    System.out.println("--------------------------------------------");
+                    System.out.println("|Press any key to continue...|");
+                    enterScanner.nextLine();
                 }
-                else if(resp.equals("N"))
-                {
-                    System.out.println("-------------------------------");
-                    System.out.println("MISSION ABORTED");
-                    System.out.println("-------------------------------");
-                    tower();
+                else{
+                    System.out.println("*****************************");
+                    System.out.println("Side Mission: A Helping Hand");
+                    System.out.println("*****************************");
+                    System.out.println("Friend: Hey "+playerName+"! Long time no see. Where had you been all this while!?");
+                    System.out.print(playerName+": ");
+                    enterScanner.nextLine();
+                    System.out.println("\nFriend: Oh! So, Whats brings you here, buddy?");
+                    System.out.print(playerName+": ");
+                    enterScanner.nextLine();
+                    System.out.println("\nFriend: Things aren't going great lately. The dragon....");
+                    System.out.print(playerName+": ");
+                    enterScanner.nextLine();
+                    System.out.println("\nFriend: The dragon has blazed all my paddy fields; my livelihood is at stake, I owe a debt of gratitude to my closest friends..\nI am afraid of losing them if I don't payback. Would you help me repay my debts?");
+                    System.out.print(playerName+": ");
+                    enterScanner.nextLine();
+                    System.out.println("-------------------------------------------------------------------------");
+                    System.out.println("Objective: Help your friend pay off his debts by playing The Lucky Bucky");
+                    System.out.println("-------------------------------------------------------------------------");
+                    System.out.println("|Press Y for Yes or N for Next time maybe |");
+                    String resp=enterScanner.nextLine();
+                    if(resp.equals("Y"))
+                    {
+                        sidemissiontag=1;
+                        gameparlour();
+                    }
+                    else if(resp.equals("N"))
+                    {
+                        System.out.println("-------------------------------");
+                        System.out.println("MISSION ABORTED");
+                        System.out.println("-------------------------------");
+                        tower();
+                    }
                 }
             }
         }
         else if(ch==2){
-            System.out.println("You: Woof! Its so sunny! I am sweating already.\nFisherman: Hello gentleman! Would you like to go fishing? Y: Yes(-$15)/ N: No");
-            String resp=enterScanner.nextLine();
-            if(resp.equals("Y"))
-            {
-                System.out.println("You: Why not!");
-                if(money>=15)
-                {          
-                    money=money-15;
-                    fishing();
-                }
-                else
+            if(time>20 || time<6){
+                System.out.println("----------------");
+                System.out.println("Your HP: "+ playerHP);
+                System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("Time: "+time);
+                System.out.println("$: "+money);
+                System.out.println("----------------");
+                //System.out.println("You: ****LINExxxxxLINE**** ");
+                System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                System.out.println("STAY TUNED FOR A WHOLE NEW DIMENSION ;)");
+                System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                palaceGate();
+            }
+            else{
+                System.out.println("You: Woof! It is so sunny! I am sweating already.\nFisherman: Hello gentleman! Would you like to go fishing? Y: Yes(-$15)/ N: No");
+                String resp=enterScanner.nextLine();
+                if(resp.equals("Y"))
                 {
-                    System.out.println("Fisherman: Oh no! You do not have enough money to go fishing!");
-                    north();
+                    System.out.println("You: Why not!");
+                    if(money>=15)
+                    {          
+                        money=money-15;
+                        fishing();
+                    }
+                    else
+                    {
+                        System.out.println("Fisherman: Oh no! You do not have enough money to go fishing!");
+                        north();
+                    }
+                }
+                else{
+                    System.out.println("------------------------------------------------------------------");
+                    System.out.println("\n\n1: Go back to the crossroad");
+                    System.out.println("\n------------------------------------------------------------------\n");
+                    int ch1=sc.nextInt();
+
+                    if(ch1==1)
+                    {
+                        tower();
+                    }
+                    else
+                    {
+                        north();
+                    }
                 }
             }
+        }
+        else if(ch==3){
+            coliseum();
         }
         else if(ch==0){
             tower();
         }
         else{
-            north();
-        }
-        System.out.println("------------------------------------------------------------------");
-        System.out.println("\n\n1: Go back to the crossroad");
-        System.out.println("\n------------------------------------------------------------------\n");
-        int ch1=sc.nextInt();
-
-        if(ch1==1)
-        {
-            tower();
-        }
-        else
-        {
             north();
         }
     }
@@ -391,11 +441,12 @@ public class dnd
         System.out.println("--------------------");
         System.out.println("Your HP: "+ playerHP);
         System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("Time: "+time);
         System.out.println("$: "+money);
         System.out.println("********************************");
         System.out.println("         The Fresh Catch        ");
         System.out.println("********************************");
-        System.out.println("You have 5 chances. Catch as many fishes as possible by entering the distance to throw the bait.\nFor every fish you catch, you get $10.");
+        System.out.println("You have 5 chances to catch as many fishes as possible by entering the distance to throw the bait.\nFor every fish caught, you get $10.");
         System.out.println("------------------------------------------------------------------------------------------------");
         int x=5;
         int fish=0;
@@ -435,6 +486,16 @@ public class dnd
         }
     }
 
+    void coliseum()
+    {
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        System.out.println("COLISEUM IS UNDER CONSTRUCTION");
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        System.out.println("\n|Press any key to continue|");
+        enterScanner.nextLine();
+        north();
+    }
+
     void east()
     {
         System.out.println("\n------------------------------------------------------------------\n");
@@ -458,11 +519,12 @@ public class dnd
 
             if(choice==1 && money>=15)
             {
-                playerWeapon="Knife";
+                playerWeapon="Dagger";
                 money=money-15;
                 System.out.println("--------------------");
                 System.out.println("Your HP: "+ playerHP);
                 System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("Time: "+time);
                 System.out.println("$: "+money);
                 System.out.println("--------------------");
             }
@@ -473,6 +535,7 @@ public class dnd
                 System.out.println("--------------------");
                 System.out.println("Your HP: "+ playerHP);
                 System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("Time: "+time);
                 System.out.println("$: "+money);
                 System.out.println("--------------------");
             }
@@ -483,6 +546,7 @@ public class dnd
                 System.out.println("--------------------");
                 System.out.println("Your HP: "+ playerHP);
                 System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("Time: "+time);
                 System.out.println("$: "+money);
                 System.out.println("--------------------");
             }
@@ -493,6 +557,7 @@ public class dnd
                 System.out.println("--------------------");
                 System.out.println("Your HP: "+ playerHP);
                 System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("Time: "+time);
                 System.out.println("$: "+money);
                 System.out.println("--------------------");
             }
@@ -502,7 +567,7 @@ public class dnd
             else
             {
                 System.out.println("------------------------------------------------------------");
-                System.out.println("Uh oh! You do not have enough money to purchase thagt spell!");
+                System.out.println("Uh oh! You do not have enough money to purchase that weapon!");
                 System.out.println("------------------------------------------------------------");
                 System.out.println("|Press any key to continue|");
                 enterScanner.nextLine();
@@ -523,6 +588,7 @@ public class dnd
                 System.out.println("--------------------");
                 System.out.println("Your HP: "+ playerHP);
                 System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("Time: "+time);
                 System.out.println("$: "+money);
                 System.out.println("--------------------");
             }
@@ -534,6 +600,7 @@ public class dnd
                 System.out.println("--------------------");
                 System.out.println("Your HP: "+ playerHP);
                 System.out.println("Current Weapon: "+ playerWeapon);
+                System.out.println("Time: "+time);
                 System.out.println("$: "+money);
                 System.out.println("--------------------");
             }
@@ -542,50 +609,60 @@ public class dnd
             }
             else
             {
-                System.out.println("------------------------------------------------------------");
-                System.out.println("Uh oh! You do not have enough money to purchase thagt spell!");
-                System.out.println("------------------------------------------------------------");
+                System.out.println("-----------------------------------------------------------");
+                System.out.println("Uh oh! You do not have enough money to purchase that spell!");
+                System.out.println("-----------------------------------------------------------");
                 System.out.println("|Press any key to continue|");
                 enterScanner.nextLine();
             }
         }
         else if(ch==3)
         {
-            System.out.println("***********************");
-            System.out.println("Welcome to Lucky Bucky");
-            System.out.println("***********************");
-            System.out.println("Manager: Would you like to try your luck? Y:Yes(-$100)/ N:NO");
-            System.out.println("------------------------------------------------------------");
-            String resp=enterScanner.nextLine();
-            if(resp.equals("Y"))
-            {
-                System.out.println("You: No one's luckier than me ;)");
-                if(money>=100)
-                {
-                    money=money-100;
-                    gameparlour();
-                }
-                else
-                {
-                    System.out.println("Host: Uh oh! Looks like you do not have enough money to try your luck!");
-                    System.out.println("-----------------------------------------------------------------------");
-                    System.out.println("|Press any key to continue|");
-                    enterScanner.nextLine();
-                }
+            if(time>3 || time<6){
+                System.out.println("Lucky Bucky is closed now. It opens at 7a.m.");
+                System.out.println("---------------------");
+                System.out.println("|Press C to continue|");
+                System.out.println("---------------------");
+                enterScanner.nextLine();
+                east();
             }
-            else
-            {
-                System.out.println("\n------------------------------------------------------------------");
-                System.out.println("1: Go back to the crossroad");
-                System.out.println("------------------------------------------------------------------\n");
-                int ch1=sc.nextInt();
-                if(ch1==1)
+            else{
+                System.out.println("***********************");
+                System.out.println("Welcome to Lucky Bucky");
+                System.out.println("***********************");
+                System.out.println("Manager: Would you like to try your luck? Y:Yes(-$100)/ N:NO");
+                System.out.println("------------------------------------------------------------");
+                String resp=enterScanner.nextLine();
+                if(resp.equals("Y"))
                 {
-                    tower();
+                    System.out.println("You: No one's got a better luck than me ;)");
+                    if(money>=100)
+                    {
+                        money=money-100;
+                        gameparlour();
+                    }
+                    else
+                    {
+                        System.out.println("Host: Uh oh! Looks like you do not have enough money to try your luck!");
+                        System.out.println("-----------------------------------------------------------------------");
+                        System.out.println("|Press any key to continue|");
+                        enterScanner.nextLine();
+                    }
                 }
                 else
                 {
-                    east();
+                    System.out.println("\n------------------------------------------------------------------");
+                    System.out.println("1: Go back to the crossroad");
+                    System.out.println("------------------------------------------------------------------\n");
+                    int ch1=sc.nextInt();
+                    if(ch1==1)
+                    {
+                        tower();
+                    }
+                    else
+                    {
+                        east();
+                    }
                 }
             }
         }
@@ -595,19 +672,6 @@ public class dnd
         else{
             east();
         }
-
-        System.out.println("\n------------------------------------------------------------------");
-        System.out.println("1: Go back to the crossroad");
-        System.out.println("------------------------------------------------------------------\n");
-        int ch1=sc.nextInt();
-        if(ch1==1)
-        {
-            tower();
-        }
-        else
-        {
-            east();
-        }
     }
 
     void gameparlour()
@@ -615,12 +679,13 @@ public class dnd
         System.out.println("--------------------");
         System.out.println("Your HP: "+ playerHP);
         System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("Time: "+time);
         System.out.println("$: "+money);
         System.out.println("--------------------");
         System.out.println("********************************");
         System.out.println("        The Lucky Bucky      ");
         System.out.println("********************************");
-        System.out.println("You have 5 chances to guess the 5 lucky numbers ranging from 1 to 100. The numbers generated shall be totally random.");
+        System.out.println("You have 5 chances to guess the 5 lucky numbers ranging from 1 to 100. The numbers generated shall be random.");
         System.out.println("The game is based on your guess and luck. For every number guessed correctly, you get $100. ;)");
         System.out.println("--------------------------------------------------------------------------------------------------------------------");
         Random rand = new Random();
@@ -699,6 +764,7 @@ public class dnd
         System.out.println("--------------------");
         System.out.println("Your HP: "+ playerHP);
         System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("Time: "+time);
         System.out.println("$: "+money);
         System.out.println("--------------------");
         System.out.println("********************************");
@@ -714,79 +780,100 @@ public class dnd
         int ch = sc.nextInt();
 
         if(ch==1){
-            System.out.println("-------TICKETS & PRICING-------");
-            System.out.println("1. Round Trip\t$5\n0. Return Back");
-            int choice=sc.nextInt();
-            if(choice==1){
-                if(money>=5){
-                    money=money-5;
-                    System.out.println("Pilot: Are you ready to explore majestic hamlet!?");
-                    System.out.println(playerName+": ");
-                    enterScanner.nextLine();
-                    System.out.println("Pilot: Let's gooooo!...");
-                    dodo=1;
-                    explore();
+            if(time>20 || time<4){
+                System.out.println("EXPERIENCE BREATHTAKING NIGHT LIFE WITH ALL NEW NIGHT TOURS");
+                System.out.println("-------------------------Coming Soon-------------------------");
+                System.out.println("|Press any key to continue|");
+                enterScanner.nextLine();
+                System.out.println("---------------------------");
+                dodoport();
+            }
+            else{
+                System.out.println("-------TICKETS & PRICING-------");
+                System.out.println("1. Round Trip\t$5\n0. Return Back");
+                int choice=sc.nextInt();
+                if(choice==1){
+                    if(money>=5){
+                        money=money-5;
+                        System.out.println("Pilot: Are you ready to explore majestic hamlet!?");
+                        System.out.println(playerName+": ");
+                        enterScanner.nextLine();
+                        System.out.println("Pilot: Let's gooooo!...");
+                        dodo=1;
+                        explore();
+                    }
+                    else{
+                        System.out.println("------------------------------------");
+                        System.out.println("You do not have enough money to fly!");
+                        System.out.println("------------------------------------");
+                        System.out.println("|Press any key to continue|");
+                        enterScanner.nextLine();
+                        dodoport();
+                    }
                 }
-                else{
-                    System.out.println("------------------------------------");
-                    System.out.println("You do not have enough money to fly!");
-                    System.out.println("------------------------------------");
-                    System.out.println("|Press any key to continue|");
-                    enterScanner.nextLine();
+                else
+                {
                     dodoport();
                 }
-            }
-            else
-            {
-                dodoport();
             }
         }
 
         else if(ch==2){
-            System.out.println("-------TICKETS & PRICING-------");
-            System.out.println("1. One Way\t$100\n2. Round Trip\t$150\n0. Return Back");
-            int choice=sc.nextInt();
-            if(choice==1){
-                if(money>=100){
-                    money=money-100;
-                    System.out.println("Pilot: Buckle up people! Because we are flying to the grandeur Clove Mountains!");
-                    System.out.println(playerName+": ");
-                    enterScanner.nextLine();
-                    System.out.println("Pilot: Its gonna be deadly epic!...");
-                    dodo=1;
-                    west();
-                }
-                else{
-                    System.out.println("------------------------------------");
-                    System.out.println("You do not have enough money to fly!");
-                    System.out.println("------------------------------------");
-                    System.out.println("|Press any key to continue|");
-                    enterScanner.nextLine();
-                    dodoport();
-                }
-            }
-            else if(choice==2){
-                if(money>=150){
-                    round=1;
-                    money=money-150;
-                    System.out.println("Pilot: Buckle up people! Because we are flying to the grandeur Clove Mountains!");
-                    System.out.println(playerName+": ");
-                    enterScanner.nextLine();
-                    System.out.println("Pilot: Its gonna be deadly epic!...");
-                    dodo=1;
-                    west();
-                }
-                else{
-                    System.out.println("------------------------------------");
-                    System.out.println("You do not have enough money to fly!");
-                    System.out.println("------------------------------------");
-                    System.out.println("|Press any key to continue|");
-                    enterScanner.nextLine();
-                    dodoport();
-                }
-            }
-            else if(choice==0){
+            if(time>20.00 || time<4.00){
+                System.out.println("EXPERIENCE BREATHTAKING NIGHT LIFE WITH ALL NEW NIGHT TOURS");
+                System.out.println("-------------------------Coming Soon-------------------------");
+                System.out.println("|Press any key to continue|");
+                enterScanner.nextLine();
+                System.out.println("---------------------------");
                 dodoport();
+            }
+            else{
+                System.out.println("-------TICKETS & PRICING-------");
+                System.out.println("1. One Way\t$100\n2. Round Trip\t$150\n0. Return Back");
+                int choice=sc.nextInt();
+                if(choice==1){
+                    if(money>=100){
+                        money=money-100;
+                        System.out.println("Pilot: Buckle up people! Because we are flying to the grandeur Clove Mountains!");
+                        System.out.println(playerName+": ");
+                        enterScanner.nextLine();
+                        System.out.println("Pilot: Its gonna be deadly epic!...");
+                        dodo=1;
+                        west();
+                    }
+                    else{
+                        System.out.println("------------------------------------");
+                        System.out.println("You do not have enough money to fly!");
+                        System.out.println("------------------------------------");
+                        System.out.println("|Press any key to continue|");
+                        enterScanner.nextLine();
+                        dodoport();
+                    }
+                }
+                else if(choice==2){
+                    if(money>=150){
+                        round=1;
+                        money=money-150;
+                        System.out.println("Pilot: Buckle up, people! Because we are flying to the grandeur Clove Mountains!");
+                        System.out.println(playerName+": ");
+                        enterScanner.nextLine();
+                        System.out.println("Pilot: Its gonna be deadly epic!...");
+                        dodo=1;
+                        west();
+                    }
+                    else{
+                        System.out.println("------------------------------------");
+                        System.out.println("You do not have enough money to fly!");
+                        System.out.println("------------------------------------");
+                        System.out.println("|Press any key to continue|");
+                        enterScanner.nextLine();
+                        dodoport();
+                    }
+                }
+
+                else if(choice==0){
+                    dodoport();
+                }
             }
         }
 
@@ -803,6 +890,7 @@ public class dnd
         System.out.println("--------------------");
         System.out.println("Your HP: "+ playerHP);
         System.out.println("Current Weapon: "+ playerWeapon);
+        System.out.println("Time: "+time);
         System.out.println("$: "+money);
         System.out.println("--------------------");
         System.out.println("*********************************");
@@ -811,7 +899,6 @@ public class dnd
         System.out.println("Where would you like to travel to?");
         System.out.println("\n------INTER-KINGDOM TRAINS------");
         System.out.println("1: Kingdom of Oryn");
-
         System.out.println("\n0: Teleport to Ding Dong Tower");
         System.out.println("\n------------------------------------------------------------------\n");
 
@@ -833,7 +920,7 @@ public class dnd
                         ending();
                     }
                     else{
-                        System.out.println("Station Master: No scheduled trains for this destination. The dragon has destroyed the tracks ahead.");  
+                        System.out.println("Station Master: No scheduled trains for this destination. The dragon has blown-up the tracks ahead.");  
                         System.out.print(playerName+": ");
                         enterScanner.nextLine();
                         System.out.println("------------------------");
@@ -877,7 +964,7 @@ public class dnd
                     System.out.println("Dragon: You've gone off the rails by coming here....");
                     System.out.print(playerName+": ");
                     enterScanner.nextLine();
-                    System.out.println("\nDragon: You shall go right away. I'll roast you like peanuts if you don't move your arse.");
+                    System.out.println("\nDragon: Go right away or else, I'll roast you like peanuts if you don't move your arse.");
                     System.out.print(playerName+": ");
                     enterScanner.nextLine();
                     System.out.println("--------------------------------------------------------------------------------------------------------");
@@ -903,7 +990,7 @@ public class dnd
                 }
                 else
                 {
-                    System.out.println("Serviceman: STOP! You cannot go any further. Landslides have destroyed the road leadint ot the hilltop.");
+                    System.out.println("Serviceman: STOP! You cannot go any further. Landslides have destroyed the road leading to the hilltop.");
                     System.out.print(playerName+": ");
                     enterScanner.nextLine();
                     System.out.println("\nServiceman: You can get up there by flying. But beware! Tresspassing in the dragon's territory is more brutal than jumping inside an active volcano!");  
@@ -916,7 +1003,7 @@ public class dnd
                 }
             }
             else{
-                System.out.println("You have already killed the mighty dragon & obtained the magic spell\nReturn it back to the king!");
+                System.out.println("You already killed the mighty dragon & acquired the magic spell\nTake it back to the king!");
                 System.out.println("\n------------------------------------------------------------------\n");
                 System.out.println("1: Towards Crossroad");
                 System.out.println("\n------------------------------------------------------------------\n");
@@ -966,7 +1053,7 @@ public class dnd
         }
     }
 
-    public void attack()//developerpreview1
+    public void attack()//publicrelease1
     {
         int playerDamage =0;
 
@@ -1022,7 +1109,7 @@ public class dnd
         String pick=enterScanner.nextLine();
         if(pick.equals("F"))
         {
-            System.out.println("You obtained the magic spell!\n\n");
+            System.out.println("You picked up the magic spell!\n\n");
             System.out.println("\n------------------------------------------------------------------\n");
             System.out.println("Objective: Take the magic spell back to King Victor");
             System.out.println("1: Fly back to DoDo Port");
@@ -1040,11 +1127,11 @@ public class dnd
                         if(money>=70){
                             dodo=1;
                             money=money-70;
-                            System.out.println("------------------------------");
-                            System.out.println("DoDo has arrived!\nFlying back!");
+                            System.out.println("-----------------------------------");
+                            System.out.println("DoDo has arrived!\nFlying you back!");
                             System.out.print(playerName+": ");
                             enterScanner.nextLine();
-                            System.out.println("------------------------------");
+                            System.out.println("-----------------------------------");
                             dodoport();
                         }
                         else{
@@ -1089,11 +1176,11 @@ public class dnd
     }
 
     public void ending(){
-        System.out.println("******CHAPTER II******");
-        System.out.println("     Coming soon.... ");
+        System.out.println("****************CHAPTER II****************");
+        System.out.println("               Coming soon....            ");
         System.out.println("\n\n--------------THE END-----------------");
-        System.out.println("*****************DUNGEONS & DRAGONS***************");
-        System.out.println("\n\n          A game by Pratyush Kumar            ");    
+        System.out.println("\n\n*************DUNGEONS & DRAGONS************");
+        System.out.println("          A game by Pratyush Kumar            ");    
     }
 
     public void exit()
@@ -1130,8 +1217,9 @@ public class dnd
         }
         else if(ch==4)
         {
-            System.out.println("Current Version: v5.0 Gamma I");
-            System.out.println("Released   on  : 29 JUNE 2020   ");
+            System.out.println("Current Version: v6.0 Beta");
+            System.out.println("Current Developer Version: v1.0.0");
+            System.out.println("Released   on  : 31 JULY 2020   ");
             System.out.println("Check out the GitHub page of the game for latest updates!");
             settings();
         }
@@ -1157,11 +1245,11 @@ public class dnd
         System.out.println("**********************************");
         System.out.println("  WELCOME TO THE TOWN OF KAZA   ");
         System.out.println("**********************************");
-        System.out.println("Forged on the Northern side of Kingdom Vanaheim, on the banks of river Sipu and surrounded by Clove Mountains on the west,\n the hamlet of Kaza is home to a polulation of around 200 people, led by King Victor.\n");
-        System.out.println("With its settlements of galvanised steel rooftops, decaying walls and foggy surroundings, Kaza has a desolate atmosphere.\nThe main attraction is the Ding Dong Tower, which was built 55 years ago and designed by wood elves.\n");
-        System.out.println("Kaza has an advancing economy, which is mainly supported by alchemy, fishing and crafting. But their biggest strengths are\nhighly skilled thieving and rare wood production.\n");
-        System.out.println("With the advent of \n");
-        System.out.println("On one side of the planet, everything is lush and beautiful- and there are virtually no prey.\nOn the other side of the town, on the top of Clove Mountains, everything is scorched. Dragons have anhilitated much of the other species.\n");
+        System.out.println("Forged on the Northern side of Kingdom Vanaheim, on the banks of river Sipu and surrounded by Clove Mountains on the west,\n the hamlet of Kaza is home to a population of around 200 people, led by King Victor.\n");
+        System.out.println("With its settlements of galvanized steel rooftops, decaying walls and foggy surroundings, Kaza has a desolate atmosphere.\nThe main attraction is the Ding Dong Tower, which was built 55 years ago and designed by wood elves.\n");
+        System.out.println("Kaza has an advancing economy, which is mainly supported by alchemy, fishing and crafting. But their biggest strengths are\nhighly skilled thieving and rare wood production. In the swinging sixties, when casinos opened in Kaza, people were convinced that");
+        System.out.println("they had found the ideal way of earning a living without actually having to do any work. \n");
+        System.out.println("On one side of the planet, everything is lush and beautiful- and there is virtually no prey.\nOn the other side of the town, on top of the Clove Mountains, everything is scorched. Dragons have annihilated much of the other species.\n");
         System.out.println("Kaza lacks people skilled in war. The king's men have been trying to reach the capital of the Kingdom for centuries,\nbut they cannot cross the mountains, as their skin would melt under the heat of the powerful and mighty Dragons.");
         System.out.println("This once beautiful place is beginning to fall apart due to pack wars. There's someone who needs to end this.\n");
         System.out.println("|Press any key to continue|");
@@ -1169,19 +1257,19 @@ public class dnd
         System.out.println("Guide: So, ladies & gentlemen, hold on to your breath because we are about to fly past the iconic Ding Dong Tower!");
         System.out.print("Respond: ");
         enterScanner.nextLine();
-        System.out.println("\nGuide: The North of the hamlet is where you will find the settlements- beautiful dwarf-built bamboo houses roofed in slate.\nThose old, filthy rowing boats you see there, docked beisdes the river Sipu are meant for fishing.\nRiver Sipu, once filled with freshwater fishes; now you won't even find planktons.");
+        System.out.println("\nGuide: The North of the hamlet is where you will find the settlements- beautiful dwarf-built bamboo houses roofed in slate.\nThose old, filthy rowing boats you see there, docked besides the river Sipu are meant for fishing.\nRiver Sipu, once filled with freshwater fishes; now you won't even find planktons.");
         System.out.print("Respond: ");
         enterScanner.nextLine();
-        System.out.println("\nGuide: We are now flying above the famous and the only market, east of the town. From weapons to artillery, magic spells to magic 'powder';\nyou'll find everything here!\nAnd that's Lucky Bucky, every youngster's hangout place. Here wealthy win big while poor remain poor.");
+        System.out.println("\nGuide: We are now flying above the famous and the only market, east of the town. From weapons to artillery, magic spells to magic 'powder';\nyou'll find everything here!\nAnd that's Lucky Bucky, every youngster's hangout place. Here, the wealthy win big while the poor remain poor.");
         System.out.print("Respond: ");
         enterScanner.nextLine();
-        System.out.println("\nGuide: Look down people...before your eyes pop out, thats the majectic Palace of the King Victor.\nAnd yes! that's where you get executed if you don't follow the rules here. Be careful, you'll thank me later. ");
+        System.out.println("\nGuide: Look down people...before your eyes pop out, that's the majestic Palace of King Victor.\nAnd yes! that's where you get executed if you don't follow the rules here. Be careful, you'll thank me later. ");
         System.out.print("Respond: ");
         enterScanner.nextLine();
         System.out.println("\nGuide: Last but not the least, at the horizon you could see the Clove Mountains. Bravest of the brave fear climbing up that\nnasty little thing. Don't ever try to go up the top unless you wanna get 'roasted'.");  
         System.out.print("Respond: ");
         enterScanner.nextLine();
-        System.out.println("\nGuide:Okay impoverished people, that's what you get for what you pay for. Don't forget to tip me otherwise i'll throw you in that 'dungeon'...");  
+        System.out.println("\nGuide:Okay, impoverished people, that's what you get for what you pay for. Don't forget to tip me otherwise I'll throw you in that 'dungeon'...");  
         System.out.print("Respond: ");
         enterScanner.nextLine();
 
@@ -1272,14 +1360,14 @@ public class dnd
         }
         else if(ch==3){
             System.out.println("Keyboard Controls:");
-            System.out.println("Since this is a text based game, you won't require arrow keys to control.\nInstead, you control your in-game character via a set of instructions that  appear on screen.\nPlease remember, some commands might be case sensitive and can result in an error if not entered in the correct case.");
+            System.out.println("Since this is a text based game, you won't require arrow keys to control.\nInstead, you control your in-game character via a set of instructions that appear on screen.\nPlease remember, some commands might be case sensitive and can result in an error if not entered in the correct case.");
             System.out.println("\n|Press any key to continue|");
             enterScanner.nextLine();
             playersettings();
         }
         else if(ch==4){
-            System.out.println("Current Version: v5.0 Gamma I");
-            System.out.println("Released   on  : 29 JUNE 2020   ");
+            System.out.println("Current Version: v6.0 Beta");
+            System.out.println("Released   on  : 31 JULY 2020");
             System.out.println("Check out the GitHub page of the game for latest updates!");
             playersettings();
         }
@@ -1295,10 +1383,11 @@ public class dnd
     {
         System.out.println("\nWelcome to Dungeons & Dragons, a text-based, open world game with an adventurous storyline and a thrilling gameplay.");
         System.out.println("From the thrills to sound of geese calling at night, to the whispering wind through the pines, to the unexpected red of mistletoe on an oak;\nembark on an action-packed adventure in worlds of swords and sorcery.\nDelve into an immersive experience as you explore the mysterious little town of Kaza, full of various elements of surprise.\n");
-       
-        System.out.println("This is a pre-release developer preview of the game which focuses on the overall gameplay and quality of life changes.");
-        System.out.println("This is the FINAL version of the game and shall undergo extensive testing to obsure errors and bugs, before rolling out the public release.");
-        System.out.println("Please Note: The game is set to officially roll out on JULY 5. However, this date might change depending upon further developement constraints.\nSince this is an early preview of the game, you may encouter a few bugs throughout the gameplay.\n");
+        System.out.println("DISCLAIMER: This is sixth beta version of the game which introduces the new, interactive time module.\nIs it 6 O'clock in your city? Well it's 6 O'clock in Kaza as well. The clock of Kaza runs on your local computer time.");
+        System.out.println("The time module has given rise to various opportunities to explore in the game. Besides a vibrant nightlife,\nthe town will also feature some hidden gems, revealing in future updates.\n\nPlay the game at night to experience Kaza After Dark ;) ");
+        System.out.println("\n*****CHANGELOG*****");
+        System.out.println("1.Introducing Time Module: Works on real-time local computer clock\n2.Introducing Nightlife: Experience Kaza After Dark\n3.Gameplay Scenarios change based on time of the day\n4.OPENING SOON: Gladiator Coliseum\n5.Bug Fixes\n6.Stability & Gameplay Improvements");
+        System.out.println("--------------------");
         System.out.println("|Press any key to continue|");
         prodkey=sc.nextLine();
         if(prodkey.equals("admin"))
@@ -1314,10 +1403,10 @@ public class dnd
 
     public static void main(String[] args)
     {
-        dnd ob=new dnd();
+        dndbeta ob=new dndbeta();
         System.out.println("*****************************");
         System.out.println("      DUNGEONS & DRAGONS       ");
-        System.out.println("********Early Preview********");
+        System.out.println(" ***********Beta 6************");
         ob.auth();
     }
 }
